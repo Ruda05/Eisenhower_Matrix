@@ -12,7 +12,7 @@ namespace Eisenhower_Matrix
         private DateTime Deadline { get; set; }
         private bool IsDone { get; set; } = false;
 
-        public void ToDoItem(string title, DateTime deadline)
+        public ToDoItem(string title, DateTime deadline)
         {
             Title = title;
             Deadline = deadline;
