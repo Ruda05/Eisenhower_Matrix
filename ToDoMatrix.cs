@@ -31,13 +31,13 @@ namespace Eisenhower_Matrix
             // Returns a private filed* todoQuarters*.
         }
 
-        public void GetQuarter(String status)
+        public void GetQuarter(string status)
         {
             // Returns a chosen* TodoQuarter*object from a map *todoQuarters *.
             // Status should be one of the possible statuses('IU', 'IN', 'NU', 'NN').
         }
 
-        public void AddItem(String title, DateTime deadline, bool isImportant)
+        public void AddItem(string title, DateTime deadline, bool isImportant)
         {
             // A dds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
             // This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
