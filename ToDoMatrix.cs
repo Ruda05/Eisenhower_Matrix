@@ -21,29 +21,29 @@ namespace Eisenhower_Matrix
         //- 'NU' means that todoQuarter contains not important todoItems & urgent
         //- 'NN' means that todoQuarter contains not important & not urgent todoItems
 
-        public TodoMatrix()
+        public void TodoMatrix()
         {
             // Constructs a *TodoMatrix* object with map of all possible quarters
         }
 
-        public GetQuarters()
+        public void GetQuarters()
         {
             // Returns a private filed* todoQuarters*.
         }
 
-        public GetQuarter(String status)
+        public void GetQuarter(String status)
         {
             // Returns a chosen* TodoQuarter*object from a map *todoQuarters *.
             // Status should be one of the possible statuses('IU', 'IN', 'NU', 'NN').
         }
 
-        public AddItem(String title, DateTime deadline, bool isImportant)
+        public void AddItem(String title, DateTime deadline, bool isImportant)
         {
             // A dds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
             // This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
         }
 
-        public AddItemsFromFile(string fileName)
+        public void AddItemsFromFile(string fileName)
         {
             //Reads data from* fileName.csv* file and appends*TodoItem * objects to attributes*todoItems * in the properly *TodoQuarter * objects.
             //Every item is written in a separate line the following format:
@@ -57,7 +57,7 @@ namespace Eisenhower_Matrix
             // Otherwise item should be assign to an important TODO quarter.
         }
 
-        public SaveItemsToFile(string fileName)
+        public void SaveItemsToFile(string fileName)
         {
             // Writes all details about TODO items to* fileName.csv* file
             // Every item is written in a separate line the following format:
@@ -68,7 +68,7 @@ namespace Eisenhower_Matrix
             // Otherwise last element is an arbitrary string.
         }
 
-        public ArchiveItems()
+        public void ArchiveItems()
         {
             // Removes all *TodoItem* objects with a parameter* isDone* set to *true* from list *todoItems*
             // in every element of dictionary *todoQuarters*
