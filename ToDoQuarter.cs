@@ -14,6 +14,7 @@ namespace Eisenhower_Matrix
         
         // creates empty list named ToDoItems with strings containing description of ToDoItems objects
         private List<string> ToDoItems = new List<string>();
+        ToDoItem todoItem = new ToDoItem();
 
         public ToDoQuarter()
         {
@@ -22,7 +23,7 @@ namespace Eisenhower_Matrix
 
         public void AddItem(string title, DateTime deadline)
         {
-            var toDoItem = new ToDoItem(title, deadline);
+            var toDoItem = todoItem.CreateToDoItem(title, deadline);
             ToDoItems.Add("ToDoItem");
         }
 
