@@ -42,7 +42,7 @@ namespace Eisenhower_Matrix
             IsDone = false;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return $"[{IsDone}] {Deadline} {Title}";
         }

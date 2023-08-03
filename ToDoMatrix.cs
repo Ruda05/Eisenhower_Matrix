@@ -74,7 +74,7 @@ namespace Eisenhower_Matrix
             // in every element of dictionary *todoQuarters*
         }
 
-        public ToString()
+        public override string ToString()
         {
             return $"[{IsDone}] {Deadline} {Title}";
         }
