@@ -20,16 +20,33 @@ namespace Eisenhower_Matrix
 
         public string GetTitle() 
         {
-            string titleInput = Console.ReadLine();
-            return titleInput;
+            Console.Write("Input task title: ");
+            var titleInput = Console.ReadLine();
+            if (titleInput != null)
+            {
+                return titleInput;
+            }
+            else
+            {
+                return "No title";
+            }
 
         }
 
 
         public string GetDeadline()
         {
-            string deadlineInput = Console.ReadLine();
-            return deadlineInput;
+            // input provides only day and month - year is firmed to 2023
+            Console.Write("Input deadline in format MM-DD: ");
+            var deadlineInput = Console.ReadLine();
+            if (deadlineInput != null)
+            {
+                return deadlineInput;
+            }
+            else
+            {
+                return "No deadline";
+            }
         }
 
         public void Mark()
