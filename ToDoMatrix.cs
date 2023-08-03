@@ -76,6 +76,7 @@ namespace Eisenhower_Matrix
 
         public override string ToString()
         {
+            //  Returns a todoQuarters list (an Eisenhower todoMatrix) formatted to string.
             return $"[{IsDone}] {Deadline} {Title}";
         }
     }
