@@ -20,10 +20,10 @@ namespace Eisenhower_Matrix
             List<string> ToDoQuarter = new List<string>();
         }
 
-        public AddItem(string title, DateTime deadline)
+        public void AddItem(string title, DateTime deadline)
         {
-            var toDoItem = new ToDoItem(string title, DateTime deadline);
-            ToDoItems.Add(ToDoItem);
+            var toDoItem = new ToDoItem(title, deadline);
+            ToDoItems.Add("ToDoItem");
         }
 
         public void RemoveItem(int index)
@@ -45,10 +45,10 @@ namespace Eisenhower_Matrix
             // Returns private field *todoItems*.
         }
 
-        public ToString()
-        {
-            return $"[{IsDone}] {Deadline} {Title}";
-        }
+        //public ToString()
+        //{
+        //    return $"[{IsDone}] {Deadline} {Title}";
+        //}
 
     }
 }
