@@ -8,6 +8,8 @@ namespace Eisenhower_Matrix
 {
     internal class Input
     {
+        internal bool titleInput = true; //czemu tu muszę deklarować tą zmienną, czemu nie może być stringiem?
+
         public string GetTitle()
         {
             var titleInput = Console.ReadLine();
@@ -15,6 +17,10 @@ namespace Eisenhower_Matrix
             {
                 return titleInput;
             }
+            //if (titleInput == "A")
+            //{
+            //    Console.WriteLine("Aaaaaaa");
+            //}
             else
             {
                 return "No title";
@@ -33,6 +39,19 @@ namespace Eisenhower_Matrix
             else
             {
                 return "No deadline";
+            }
+        }
+
+        public string GetMark()
+        {
+            var markInput = Console.ReadLine();
+            if (markInput != null)
+            {
+                return markInput;
+            }
+            else
+            {
+                return "No mark";
             }
         }
     }
