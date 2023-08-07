@@ -7,7 +7,10 @@
             Console.WriteLine("Hello, Eisenhower!");
             ToDoItem todoItem = new ToDoItem();
             var input = new Input();
+            var display =new Display();
+            display.InputTitle();
             input.GetTitle();
+            display.InputDeadline();
             input.GetDeadline();
         }
     }

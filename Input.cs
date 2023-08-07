@@ -10,7 +10,6 @@ namespace Eisenhower_Matrix
     {
         public string GetTitle()
         {
-            Console.Write("Input task title: ");
             var titleInput = Console.ReadLine();
             if (titleInput != null)
             {
@@ -26,7 +25,6 @@ namespace Eisenhower_Matrix
         public string GetDeadline()
         {
             // input provides only day and month - year is firmed to 2023
-            Console.Write("Input deadline in format MM-DD: ");
             var deadlineInput = Console.ReadLine();
             if (deadlineInput != null)
             {

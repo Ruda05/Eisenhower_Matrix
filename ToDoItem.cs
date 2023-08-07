@@ -19,11 +19,6 @@ namespace Eisenhower_Matrix
             return "title";
         }
 
-
-
-
-
-
         public void Mark()
         {
             IsDone = true;
