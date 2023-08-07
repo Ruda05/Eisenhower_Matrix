@@ -6,7 +6,8 @@
         {
             Console.WriteLine("Hello, Eisenhower!");
             ToDoItem todoItem = new ToDoItem();
-            todoItem.GetTitle();
+            var inputGetTitle = new Input();
+            inputGetTitle.GetTitle();
         }
     }
 }

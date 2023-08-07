@@ -19,20 +19,7 @@ namespace Eisenhower_Matrix
             return "title";
         }
 
-        public string GetTitle() 
-        {
-            Console.Write("Input task title: ");
-            var titleInput = Console.ReadLine();
-            if (titleInput != null)
-            {
-                return titleInput;
-            }
-            else
-            {
-                return "No title";
-            }
 
-        }
 
 
         public string GetDeadline()

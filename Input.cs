@@ -8,5 +8,19 @@ namespace Eisenhower_Matrix
 {
     internal class Input
     {
+        public string GetTitle()
+        {
+            Console.Write("Input task title: ");
+            var titleInput = Console.ReadLine();
+            if (titleInput != null)
+            {
+                return titleInput;
+            }
+            else
+            {
+                return "No title";
+            }
+
+        }
     }
 }
