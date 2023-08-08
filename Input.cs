@@ -28,7 +28,6 @@ namespace Eisenhower_Matrix
 
         }
 
-        internal string? titleInput; //czemu tu muszę deklarować tą zmienną?
 
         public string GetDeadline()
         {

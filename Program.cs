@@ -6,19 +6,17 @@
         {
             Console.WriteLine("Hello, Eisenhower!");
             ToDoItem todoItem = new ToDoItem();
-            string zmienna = "sraczka";
             var input = new Input();
             var display = new Display();
-            display.InputTitle();
-            input.GetTitle();
-            display.InputDeadline();
-            input.GetDeadline();
-            display.InputMark();
-            input.GetMark();
-            Console.WriteLine(input.titleInput);
-            Console.WriteLine("dupa");
-            Console.WriteLine(input.GetTitle());
-            Console.WriteLine(zmienna);
+            display.DisplayQuestion("Input task title: ");
+            string userInputTitle = input.GetTitle();
+            display.DisplayQuestion("Input deadline in format MM-DD: ");
+            string userInputDeadline = input.GetDeadline();
+            display.DisplayQuestion("Is this task already done? Y/N: ");
+            string userInputMark = input.GetMark();
+            Console.WriteLine(userInputTitle);
+            Console.WriteLine(userInputDeadline);
+            Console.WriteLine(userInputMark);
         }
     }
 }
