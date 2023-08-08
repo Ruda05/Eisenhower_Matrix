@@ -8,7 +8,7 @@ namespace Eisenhower_Matrix
 {
     internal class Input
     {
-        internal bool titleInput = true; //czemu tu muszę deklarować tą zmienną, czemu nie może być stringiem?
+
 
         public string GetTitle()
         {
@@ -27,6 +27,8 @@ namespace Eisenhower_Matrix
             }
 
         }
+
+        internal string? titleInput; //czemu tu muszę deklarować tą zmienną?
 
         public string GetDeadline()
         {

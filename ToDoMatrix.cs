@@ -43,31 +43,6 @@ namespace Eisenhower_Matrix
             // This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
         }
 
-        public void AddItemsFromFile(string fileName)
-        {
-            //Reads data from* fileName.csv* file and appends*TodoItem * objects to attributes*todoItems * in the properly *TodoQuarter * objects.
-            //Every item is written in a separate line the following format:
-
-            //`title | day - month | is_important`
-
-            //If* isImportant* is equal to false then last element is an empty string.
-            //Otherwise the last element is an arbitrary string.
-            //If the last element of line is an empty string, *isImportant * is equal to false -
-            // it means that the item should be assigned to a not important TODO quarter.
-            // Otherwise item should be assign to an important TODO quarter.
-        }
-
-        public void SaveItemsToFile(string fileName)
-        {
-            // Writes all details about TODO items to* fileName.csv* file
-            // Every item is written in a separate line the following format:
-
-            // `title | day - month | is_important`
-
-            // If* IsImportant*contains false then the last element of line should be an empty string.
-            // Otherwise last element is an arbitrary string.
-        }
-
         public void ArchiveItems()
         {
             // Removes all *TodoItem* objects with a parameter* isDone* set to *true* from list *todoItems*
