@@ -13,14 +13,11 @@ namespace Eisenhower_Matrix
         public string GetTitle()
         {
             var titleInput = Console.ReadLine();
-            if (titleInput != null)
+            
+            if (titleInput != "")
             {
                 return titleInput;
             }
-            //if (titleInput == "A")
-            //{
-            //    Console.WriteLine("Aaaaaaa");
-            //}
             else
             {
                 return "No title";
@@ -35,7 +32,7 @@ namespace Eisenhower_Matrix
             var deadlineInput = Console.ReadLine();
             if (deadlineInput != null)
             {
-                return deadlineInput;
+                return $"2023-{deadlineInput}";
             }
             else
             {
