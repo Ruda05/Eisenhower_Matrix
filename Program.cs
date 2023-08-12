@@ -17,6 +17,12 @@
             Console.WriteLine(userInputTitle);
             Console.WriteLine(userInputDeadline);
             Console.WriteLine(userInputMark);
+            var importantUrgent = new ToDoQuarter();
+            var notImportantUrgent = new ToDoQuarter();
+            var importantNotUrgent = new ToDoQuarter();
+            var notImportantNotUrgent = new ToDoQuarter();
+            importantUrgent.AddItem(userInputTitle, userInputDeadline);
+            Console.WriteLine(importantUrgent);
         }
     }
 }

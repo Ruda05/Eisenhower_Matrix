@@ -9,14 +9,14 @@ namespace Eisenhower_Matrix
     internal class ToDoItem
     {
         private string? Title { get; set; }
-        private DateTime Deadline { get; set; }
+        private string? Deadline { get; set; }
         private bool IsDone { get; set; } = false;
 
-        public string CreateToDoItem(string title, DateTime deadline)
+        public string CreateToDoItem(string title, string deadline)
         {
             Title = title;
             Deadline = deadline;
-            return "title";
+            return ToString();
         }
 
         public void Mark()
