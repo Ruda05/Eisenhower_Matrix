@@ -23,9 +23,7 @@ namespace Eisenhower_Matrix
 
         public void AddItem(string title, string deadline)
         {
-            Console.WriteLine("title: " + title + "deadline: " + deadline);
             var toDoItem = todoItem.CreateToDoItem(title, deadline);
-            Console.WriteLine(toDoItem.ToString());
             ToDoItems.Add(toDoItem);
         }
 
@@ -51,10 +49,9 @@ namespace Eisenhower_Matrix
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("ToDo Items:");
             for (int i = 0; i < ToDoItems.Count; i++)
             {
-                sb.AppendLine($"{i + 1}. {ToDoItems[i]}");
+                sb.AppendLine($"{ToDoItems[i]}");
             }
             return sb.ToString();
         }
