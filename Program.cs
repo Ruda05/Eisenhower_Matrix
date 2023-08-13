@@ -18,6 +18,7 @@
             string userInputDeadline = input.GetDeadline();
             display.DisplayQuestion("Is this task already done? Y/N: ");
             string userInputMark = input.GetMark();
+            display.DisplayQuestion("Is your task important and urgent? (1-4): \n");
             ///Console.WriteLine(userInputTitle);
             ///Console.WriteLine(userInputDeadline);
             ///Console.WriteLine(userInputMark);

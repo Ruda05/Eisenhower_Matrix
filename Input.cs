@@ -47,10 +47,40 @@ namespace Eisenhower_Matrix
             {
                 return markInput;
             }
+            else if (markInput == "Y")
+            {
+                return "X";
+            }
+            else if (markInput == "N")
+            {
+                return " ";
+            }
             else
             {
                 return "No mark";
             }
         }
+
+        //public int GetImportanceUrgency()
+        //{
+        //    int importanceUrgency = Convert.ToInt32(Console.ReadLine());
+
+        //    switch (importanceUrgency)
+        //    {
+        //        case 1:
+        //            Console.WriteLine("Your task is important and urgent");
+        //            break;
+        //        case 2:
+        //            Console.WriteLine("Your task is important and but not urgent");
+        //            break;
+        //        case 3:
+        //            Console.WriteLine("Your task is not important but urgent");
+        //            break;
+        //        case 4:
+        //            Console.WriteLine("Your task is not important and not urgent");
+        //            break;
+        //    }
+
+        //}
     }
 }
