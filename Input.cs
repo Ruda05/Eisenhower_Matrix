@@ -61,26 +61,12 @@ namespace Eisenhower_Matrix
             }
         }
 
-        //public int GetImportanceUrgency()
-        //{
-        //    int importanceUrgency = Convert.ToInt32(Console.ReadLine());
+        public int GetImportanceStatus()
+        {
+            int importanceStatus = Convert.ToInt32(Console.ReadLine());
+            return importanceStatus;
+        }
 
-        //    switch (importanceUrgency)
-        //    {
-        //        case 1:
-        //            Console.WriteLine("Your task is important and urgent");
-        //            break;
-        //        case 2:
-        //            Console.WriteLine("Your task is important and but not urgent");
-        //            break;
-        //        case 3:
-        //            Console.WriteLine("Your task is not important but urgent");
-        //            break;
-        //        case 4:
-        //            Console.WriteLine("Your task is not important and not urgent");
-        //            break;
-        //    }
-
-        //}
+        
     }
 }

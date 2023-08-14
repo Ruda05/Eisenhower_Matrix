@@ -18,7 +18,14 @@
             string userInputDeadline = input.GetDeadline();
             //display.DisplayQuestion("Is this task already done? Y/N: ");
             //string userInputMark = input.GetMark();
-            //display.DisplayQuestion("Is your task important and urgent? (1-4): \n");
+            display.DisplayQuestion("Select task group: \n" +
+                                    "1] Important and Urgent\n" +
+                                    "2] Important but Not urgent\n" +
+                                    "3] Not important but Urgent\n" +
+                                    "4] Not important and Not urgent\n" +
+                                    "Your choice: ");
+            int importanceStatus = input.GetImportanceStatus();
+            Console.WriteLine(importanceStatus);
             //Console.WriteLine(userInputTitle);
             //Console.WriteLine(userInputDeadline);
             //Console.WriteLine(userInputMark);
