@@ -51,7 +51,7 @@ namespace Eisenhower_Matrix
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < ToDoItems.Count; i++)
             {
-                sb.AppendLine($"{ToDoItems[i]}");
+                sb.AppendLine($"{i + 1}. {ToDoItems[i]}");
             }
             return sb.ToString();
         }

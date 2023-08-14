@@ -30,7 +30,14 @@
             //Console.WriteLine(userInputDeadline);
             //Console.WriteLine(userInputMark);
             importantUrgent.AddItem(userInputTitle, userInputDeadline);
+            Console.WriteLine("Important and Urgent:");
             Console.WriteLine(importantUrgent);
+            Console.WriteLine("Important but Not urgent:");
+            Console.WriteLine(importantNotUrgent);
+            Console.WriteLine("Not important but Urgent:");
+            Console.WriteLine(notImportantUrgent);
+            Console.WriteLine("Not important and Not urgent:");
+            Console.WriteLine(notImportantNotUrgent);
         }
     }
 }
