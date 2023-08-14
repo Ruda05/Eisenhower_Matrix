@@ -11,7 +11,7 @@ namespace Eisenhower_Matrix
         private string? Title { get; set; }
         private string? Deadline { get; set; }
         private bool IsDone { get; set; } = false;
-        private string itemMark { get; set; } = "X";
+        private char ItemMark { get; set; } = ' ';
 
         public string CreateToDoItem(string title, string deadline)
         {
@@ -32,12 +32,8 @@ namespace Eisenhower_Matrix
 
         public override string ToString()
         {
-            if (IsDone)
-            {
-                itemMark = "x";
-            }
-            
-            return $"[{itemMark}] {Deadline} {Title}";
+            ItemMark = IsDone ? 'x' : ' ';
+            return $"[{ItemMark}] {Deadline} {Title}";
         }
 
 
