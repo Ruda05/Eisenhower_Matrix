@@ -25,7 +25,7 @@
                                     "4] Not important and Not urgent\n" +
                                     "Your choice: ");
             int importanceStatus = input.GetImportanceStatus();
-            Console.WriteLine(importanceStatus);
+            display.DisplayMatrix(importanceStatus);
             //Console.WriteLine(userInputTitle);
             //Console.WriteLine(userInputDeadline);
             //Console.WriteLine(userInputMark);

@@ -12,6 +12,12 @@ namespace Eisenhower_Matrix
         {
             Console.Write(givenQuestion);
         }
+
+        public void DisplayMatrix(int importanceStatus)
+        {
+            Console.WriteLine(importanceStatus);
+            
+        }
       
     }
 }
