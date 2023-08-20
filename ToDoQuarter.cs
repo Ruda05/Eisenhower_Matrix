@@ -16,9 +16,9 @@ namespace Eisenhower_Matrix
         private List<string> ToDoItems = new List<string>();
         ToDoItem todoItem = new ToDoItem();
 
-        public ToDoQuarter()
+        public void ToDoMatrix()
         {
-            List<string> ToDoQuarter = new List<string>();
+            List<string> ToDoMatrix = new List<string>();
         }
 
         public void AddItem(string title, string deadline)

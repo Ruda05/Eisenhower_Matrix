@@ -32,7 +32,7 @@ namespace Eisenhower_Matrix
             var deadlineInput = Console.ReadLine();
             if (deadlineInput != null)
             {
-                return $"2023-{deadlineInput}";
+                return deadlineInput;
             }
             else
             {

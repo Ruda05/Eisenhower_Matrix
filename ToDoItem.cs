@@ -11,7 +11,7 @@ namespace Eisenhower_Matrix
         private string? Title { get; set; }
         private string? Deadline { get; set; }
         private bool IsDone { get; set; } = false;
-        private char ItemMark { get; set; } = ' ';
+        private char ItemMark { get; set; }
 
         public string CreateToDoItem(string title, string deadline)
         {
