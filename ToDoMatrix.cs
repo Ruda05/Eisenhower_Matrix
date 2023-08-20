@@ -42,8 +42,13 @@ namespace Eisenhower_Matrix
 
         public void AddItem(string title, DateTime deadline, bool isImportant)
         {
-            // A dds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
+            // Adds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
             // This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
+        }
+
+        public string EstimateUrgency(DateTime deadline, bool isImportant) 
+        {
+            return "";
         }
 
         public void ArchiveItems()
