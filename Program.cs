@@ -40,8 +40,10 @@
             Console.WriteLine("Not important and Not urgent:");
             Console.WriteLine(notImportantNotUrgent);
             //display.DisplayMatrix(importantUrgent, importantNotUrgent, notImportantUrgent, notImportantNotUrgent);
-            var newMatrix = new ToDoMatrix();
-            Console.WriteLine(newMatrix);
+            //var newMatrix = new ToDoMatrix();
+            //Console.WriteLine(newMatrix);
+            var matrix = new ToDoMatrix();
+            Console.WriteLine(matrix.ToString());
         }
     }
 }
