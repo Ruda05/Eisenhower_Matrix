@@ -44,10 +44,13 @@ namespace Eisenhower_Matrix
         {
             // Adds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
             // This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
+            //ToDoQuarters[importance].AddItem
         }
 
         public string EstimateUrgency(DateTime deadline, bool isImportant) 
         {
+            //if data <= Data.Now urgent
+            //        IU IN NU NN
             return "";
         }
 

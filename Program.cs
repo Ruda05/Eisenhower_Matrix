@@ -16,7 +16,8 @@
             display.DisplayQuestion("Input task title: ");
             string userInputTitle = input.GetTitle();
             display.DisplayQuestion("Input deadline in format MM-DD: ");
-            string userInputDeadline = input.GetDeadline();
+            string userInputDeadline = input.GetDeadline(); // 12-12
+
             //display.DisplayQuestion("Is this task already done? Y/N: ");
             //string userInputMark = input.GetMark();
             display.DisplayQuestion("Select task group: \n" +
@@ -25,6 +26,11 @@
                                     "3] Not important but Urgent\n" +
                                     "4] Not important and Not urgent\n" +
                                     "Your choice: ");
+            // Is it urgent? (Y/N) Y - true, N - false
+            // userInputTitle - title
+            // userInputDeadline -> urgency
+            // userImportance - Y / N true/false
+
             int importanceStatus = input.GetImportanceStatus();
             display.DisplayStatus(importanceStatus);
             //Console.WriteLine(userInputTitle);
@@ -45,6 +51,7 @@
             //var newMatrix = new ToDoMatrix();
             //Console.WriteLine(newMatrix);
             var matrix = new ToDoMatrix();
+            //matrix.AddItem(userInputTitle, deadline, importance);
             Console.WriteLine(matrix.ToString());
         }
     }
