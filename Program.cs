@@ -39,6 +39,8 @@
             Console.WriteLine(notImportantUrgent);
             Console.WriteLine("Not important and Not urgent:");
             Console.WriteLine(notImportantNotUrgent);
+            DateTime dateTime = DateTime.Now;
+            Console.WriteLine(dateTime.ToString("yyyy-MM-dd"));
             //display.DisplayMatrix(importantUrgent, importantNotUrgent, notImportantUrgent, notImportantNotUrgent);
             //var newMatrix = new ToDoMatrix();
             //Console.WriteLine(newMatrix);

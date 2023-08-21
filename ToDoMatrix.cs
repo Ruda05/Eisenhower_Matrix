@@ -62,15 +62,40 @@ namespace Eisenhower_Matrix
             //  Returns a todoQuarters list (an Eisenhower todoMatrix) formatted to string.
             // return $"[{IsDone}] {Deadline} {Title}";
 
-            StringBuilder stringBuilder = new StringBuilder();
+            //StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.AppendLine("TodoMatrix Keys:");
-            foreach (string quarterKey in ToDoQuarters.Keys)
-            {
-                stringBuilder.AppendLine(quarterKey);
-            }
+            //stringBuilder.AppendLine("TodoMatrix Keys:");
+            //foreach (string quarterKey in ToDoQuarters.Keys)
+            //{
+            //    stringBuilder.AppendLine(quarterKey);
+            //}
 
-            return stringBuilder.ToString();
+            //return stringBuilder.ToString();
+
+            StringBuilder tableBuilder = new StringBuilder();
+
+            tableBuilder.AppendLine(@"
+    |            URGENT              |           NOT URGENT           |
+  --|--------------------------------|--------------------------------|--
+");
+
+            // You can insert your data here using placeholders
+            tableBuilder.AppendLine("    | 1. [ ] 9-6  go to the doctor   |                                |");
+            tableBuilder.AppendLine("    | 2. [x] 11-6 submit assignment  |                                |");
+            // Add more rows as needed
+
+            tableBuilder.AppendLine(@"
+  --|--------------------------------|--------------------------------|--
+");
+
+            // Insert more data here for the second section of the table
+            // Add more rows as needed
+
+            tableBuilder.AppendLine(@"
+  --|--------------------------------|--------------------------------|--");
+
+            return tableBuilder.ToString();
+
         }
     }
 }
