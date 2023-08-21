@@ -74,12 +74,35 @@ namespace Eisenhower_Matrix
 
             StringBuilder tableBuilder = new StringBuilder();
 
-            tableBuilder.AppendLine(@"
-    |            URGENT              |           NOT URGENT           |
-  --|--------------------------------|--------------------------------|--");
+            tableBuilder.AppendLine("    |            URGENT              |           NOT URGENT           |");
+            tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
             tableBuilder.AppendLine("    | 1. [ ] 9-6  go to the doctor   |                                |");
             tableBuilder.AppendLine("    | 2. [x] 11-6 submit assignment  |                                |");
+            tableBuilder.AppendLine("  I |                                |                                |");
+            tableBuilder.AppendLine("  M |                                |                                |");
+            tableBuilder.AppendLine("  P |                                |                                |");
+            tableBuilder.AppendLine("  O |                                |                                |");
+            tableBuilder.AppendLine("  R |                                |                                |");
+            tableBuilder.AppendLine("  T |                                |                                |");
+            tableBuilder.AppendLine("  A |                                |                                |");
+            tableBuilder.AppendLine("  N |                                |                                |");
+            tableBuilder.AppendLine("  T |                                |                                |");
+            tableBuilder.AppendLine("    |                                |                                |");
+            tableBuilder.AppendLine("    |                                |                                |");
             tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+            tableBuilder.AppendLine("  N |                                |                                |");
+            tableBuilder.AppendLine("  O |                                |                                |");
+            tableBuilder.AppendLine("  T |                                |                                |");
+            tableBuilder.AppendLine("    |                                |                                |");
+            tableBuilder.AppendLine("  I |                                |                                |");
+            tableBuilder.AppendLine("  M |                                |                                |");
+            tableBuilder.AppendLine("  P |                                |                                |");
+            tableBuilder.AppendLine("  O |                                |                                |");
+            tableBuilder.AppendLine("  R |                                |                                |");
+            tableBuilder.AppendLine("  T |                                |                                |");
+            tableBuilder.AppendLine("  A |                                |                                |");
+            tableBuilder.AppendLine("  N |                                |                                |");
+            tableBuilder.AppendLine("  T |                                |                                |");
             tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
 
             return tableBuilder.ToString();
