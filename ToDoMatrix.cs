@@ -27,6 +27,9 @@ namespace Eisenhower_Matrix
             ToDoQuarters.Add("IN", new ToDoQuarter());
             ToDoQuarters.Add("NU", new ToDoQuarter());
             ToDoQuarters.Add("NN", new ToDoQuarter());
+
+            //Eisenhower_Matrix { "IU": <List>, "IN": <List>}
+            //,"IU"[0]
         }
 
         public void GetQuarters()
