@@ -76,23 +76,11 @@ namespace Eisenhower_Matrix
 
             tableBuilder.AppendLine(@"
     |            URGENT              |           NOT URGENT           |
-  --|--------------------------------|--------------------------------|--
-");
-
-            // You can insert your data here using placeholders
+  --|--------------------------------|--------------------------------|--");
             tableBuilder.AppendLine("    | 1. [ ] 9-6  go to the doctor   |                                |");
             tableBuilder.AppendLine("    | 2. [x] 11-6 submit assignment  |                                |");
-            // Add more rows as needed
-
-            tableBuilder.AppendLine(@"
-  --|--------------------------------|--------------------------------|--
-");
-
-            // Insert more data here for the second section of the table
-            // Add more rows as needed
-
-            tableBuilder.AppendLine(@"
-  --|--------------------------------|--------------------------------|--");
+            tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+            tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
 
             return tableBuilder.ToString();
 
