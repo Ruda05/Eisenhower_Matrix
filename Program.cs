@@ -1,4 +1,6 @@
-﻿namespace Eisenhower_Matrix
+﻿using System.Globalization;
+
+namespace Eisenhower_Matrix
 {
     internal class Program
     {   
@@ -15,9 +17,30 @@
             var notImportantNotUrgent = new ToDoQuarter();
             display.DisplayQuestion("Input task title: ");
             string userInputTitle = input.GetTitle();
-            display.DisplayQuestion("Input deadline in format MM-DD: ");
+            display.DisplayQuestion("Input deadline in format DD-MM: ");
             string userInputDeadline = input.GetDeadline(); // 12-12
+            
+            string dateFormat = "dd-MM";
 
+            DateTime parsedDate;
+
+            // Próba sparsowania daty
+            if (DateTime.TryParseExact(userInputDeadline, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+            {
+                Console.WriteLine("Parsowanie powiodło się. Data: " + parsedDate);
+            }
+            else
+            {
+                Console.WriteLine("Nie udało się sparsować daty.");
+            }
+            
+            DateTime dateTime = DateTime.Now;
+            var dateDiff = dateTime - parsedDate;
+            Console.WriteLine(dateDiff);
+            Console.WriteLine(dateDiff.ToString("dd"));
+            Console.WriteLine(dateTime.ToString("dd.MM.yyyy"));
+            Console.WriteLine(parsedDate.ToString("dd.MM.yyyy"));
+            
             //display.DisplayQuestion("Is this task already done? Y/N: ");
             //string userInputMark = input.GetMark();
             display.DisplayQuestion("Select task group: \n" +
@@ -45,8 +68,7 @@
             Console.WriteLine(notImportantUrgent);
             Console.WriteLine("Not important and Not urgent:");
             Console.WriteLine(notImportantNotUrgent);
-            DateTime dateTime = DateTime.Now;
-            Console.WriteLine(dateTime.ToString("yyyy-MM-dd"));
+            
             //display.DisplayMatrix(importantUrgent, importantNotUrgent, notImportantUrgent, notImportantNotUrgent);
             //var newMatrix = new ToDoMatrix();
             //Console.WriteLine(newMatrix);
