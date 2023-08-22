@@ -60,7 +60,6 @@ namespace Eisenhower_Matrix
             if (DateTime.TryParseExact(userInputDeadline, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
             {
                 Console.WriteLine("Your deadline is: " + parsedDate.ToString("dd-MM"));
-                
             }
             else
             {
@@ -89,16 +88,6 @@ namespace Eisenhower_Matrix
             {
                 return "NotImportantNotUrgent (NN)";
             }
-
-            //string dateDiffDays = dateDiff.ToString("dd");
-            //dateDiff.ToString("dd");
-
-            //Console.WriteLine(dateDiff);
-            //Console.WriteLine(dateDiff.ToString("dd"));
-            //Console.WriteLine(dateTime.ToString("dd.MM.yyyy"));
-            //Console.WriteLine(parsedDate.ToString("dd.MM.yyyy"));
-            //        IU IN NU NN
-
         }
 
         public void ArchiveItems()
