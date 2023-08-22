@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
@@ -50,11 +51,34 @@ namespace Eisenhower_Matrix
             //ToDoQuarters[importance].AddItem
         }
 
-        public string EstimateUrgency(DateTime deadline, bool isImportant) 
+        public string EstimateUrgency(string userInputDeadline, string deadline, bool isImportant)
         {
-            //if data <= Data.Now urgent
+            string dateFormat = "dd-MM";
+            DateTime parsedDate;
+
+            // Próba sparsowania daty
+            if (DateTime.TryParseExact(userInputDeadline, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+            {
+                Console.WriteLine("Parsowanie powiodło się. Data: " + parsedDate);
+            }
+            else
+            {
+                Console.WriteLine("Nie udało się sparsować daty. Podałeś datę w złym formacie");
+            }
+
+            DateTime dateTime = DateTime.Now;
+            var dateDiff = dateTime - parsedDate;
+            string dateDiffDays = dateDiff.ToString("dd");
+            int dateDiffDaysInt = int.Parse(dateDiffDays);
+            
+
+            return dateDiff.ToString("dd");
+            //Console.WriteLine(dateDiff);
+            //Console.WriteLine(dateDiff.ToString("dd"));
+            //Console.WriteLine(dateTime.ToString("dd.MM.yyyy"));
+            //Console.WriteLine(parsedDate.ToString("dd.MM.yyyy"));
             //        IU IN NU NN
-            return "";
+
         }
 
         public void ArchiveItems()

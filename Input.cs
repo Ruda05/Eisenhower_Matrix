@@ -41,6 +41,8 @@ namespace Eisenhower_Matrix
             }
         }
 
+
+
         public string GetMark()
         {
             var markInput = Console.ReadLine();

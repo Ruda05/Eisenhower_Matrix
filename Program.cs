@@ -1,15 +1,19 @@
-﻿using System.Globalization;
+﻿using Microsoft.VisualBasic;
+using System.Globalization;
 
 namespace Eisenhower_Matrix
 {
     internal class Program
-    {   
+    {
+        public static string dateDiff { get; private set; }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, Eisenhower!");
             ToDoItem todoItem = new ToDoItem();
             var input = new Input();
             var display = new Display();
+            var urgency = new ToDoMatrix();
             //var quarterMatrix = 
             var importantUrgent = new ToDoQuarter();
             var notImportantUrgent = new ToDoQuarter();
@@ -19,28 +23,7 @@ namespace Eisenhower_Matrix
             string userInputTitle = input.GetTitle();
             display.DisplayQuestion("Input deadline in format DD-MM: ");
             string userInputDeadline = input.GetDeadline(); // 12-12
-            
-            string dateFormat = "dd-MM";
-
-            DateTime parsedDate;
-
-            // Próba sparsowania daty
-            if (DateTime.TryParseExact(userInputDeadline, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
-            {
-                Console.WriteLine("Parsowanie powiodło się. Data: " + parsedDate);
-            }
-            else
-            {
-                Console.WriteLine("Nie udało się sparsować daty.");
-            }
-            
-            DateTime dateTime = DateTime.Now;
-            var dateDiff = dateTime - parsedDate;
-            Console.WriteLine(dateDiff);
-            Console.WriteLine(dateDiff.ToString("dd"));
-            Console.WriteLine(dateTime.ToString("dd.MM.yyyy"));
-            Console.WriteLine(parsedDate.ToString("dd.MM.yyyy"));
-            
+            Console.WriteLine(ToDoMatrix.EstimateUrgency(userInputDeadline, userInputDeadline, true));
             //display.DisplayQuestion("Is this task already done? Y/N: ");
             //string userInputMark = input.GetMark();
             display.DisplayQuestion("Select task group: \n" +
