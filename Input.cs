@@ -64,10 +64,27 @@ namespace Eisenhower_Matrix
             }
         }
 
-        public int GetImportanceStatus()
+        public string GetImportanceStatus()
         {
-            int importanceStatus = Convert.ToInt32(Console.ReadLine());
-            return importanceStatus;
+            var importanceStatusInput = Console.ReadLine();
+
+            if (importanceStatusInput != "")
+            {
+                return importanceStatusInput;
+            }
+            else
+            {
+                return "No importance";
+            }
+        }
+
+        public bool IsImportant(string importanceStatusINPUT)
+        {
+            if (importanceStatusINPUT == "Y")
+            {
+                return true;
+            }
+            else { return false; }
         }
 
         

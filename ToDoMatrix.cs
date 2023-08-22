@@ -59,26 +59,37 @@ namespace Eisenhower_Matrix
             // Próba sparsowania daty
             if (DateTime.TryParseExact(userInputDeadline, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
             {
-                Console.WriteLine("Parsowanie powiodło się. Data: " + parsedDate);
+                Console.WriteLine("Your deadline is: " + parsedDate);
             }
             else
             {
-                Console.WriteLine("Nie udało się sparsować daty. Podałeś datę w złym formacie");
+                Console.WriteLine("Wrong format of date.");
             }
 
             DateTime dateTime = DateTime.Now;
             TimeSpan dateDiff = parsedDate - dateTime;
             int daysDifference = (int)dateDiff.TotalDays;
             
-            if (daysDifference < 3)
+            if (daysDifference <= 3 && isImportant == true)
             {
-                return "urgent";
+                return "ImportantUrgent (IU)";
             }
-            else { return "not urgent"; }
+            if (daysDifference > 3 && isImportant == true)
+            { 
+                return "ImportantNotUrgent (IN)"; 
+            }
+            if (daysDifference <= 3 && isImportant == false)
+            {
+                return "NotImportantUrgent (NU)";
+            }
+            else
+            {
+                return "NotImportantNotUrgent (NN)";
+            }
 
             //string dateDiffDays = dateDiff.ToString("dd");
             //dateDiff.ToString("dd");
-            
+
             //Console.WriteLine(dateDiff);
             //Console.WriteLine(dateDiff.ToString("dd"));
             //Console.WriteLine(dateTime.ToString("dd.MM.yyyy"));
@@ -143,6 +154,11 @@ namespace Eisenhower_Matrix
 
             return tableBuilder.ToString();
 
+        }
+
+        internal string? EstimateUrgency(string userInputDeadline1, string userInputDeadline2, Func<string, bool> isImportant)
+        {
+            throw new NotImplementedException();
         }
     }
 }
