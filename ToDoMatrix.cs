@@ -67,12 +67,18 @@ namespace Eisenhower_Matrix
             }
 
             DateTime dateTime = DateTime.Now;
-            var dateDiff = dateTime - parsedDate;
-            string dateDiffDays = dateDiff.ToString("dd");
-            int dateDiffDaysInt = int.Parse(dateDiffDays);
+            TimeSpan dateDiff = parsedDate - dateTime;
+            int daysDifference = (int)dateDiff.TotalDays;
             
+            if (daysDifference < 3)
+            {
+                return "urgent";
+            }
+            else { return "not urgent"; }
 
-            return dateDiff.ToString("dd");
+            //string dateDiffDays = dateDiff.ToString("dd");
+            //dateDiff.ToString("dd");
+            
             //Console.WriteLine(dateDiff);
             //Console.WriteLine(dateDiff.ToString("dd"));
             //Console.WriteLine(dateTime.ToString("dd.MM.yyyy"));

@@ -13,7 +13,7 @@ namespace Eisenhower_Matrix
             ToDoItem todoItem = new ToDoItem();
             var input = new Input();
             var display = new Display();
-            var urgency = new ToDoMatrix();
+            var toDoMatrix = new ToDoMatrix();
             //var quarterMatrix = 
             var importantUrgent = new ToDoQuarter();
             var notImportantUrgent = new ToDoQuarter();
@@ -23,7 +23,7 @@ namespace Eisenhower_Matrix
             string userInputTitle = input.GetTitle();
             display.DisplayQuestion("Input deadline in format DD-MM: ");
             string userInputDeadline = input.GetDeadline(); // 12-12
-            Console.WriteLine(ToDoMatrix.EstimateUrgency(userInputDeadline, userInputDeadline, true));
+            Console.WriteLine(toDoMatrix.EstimateUrgency(userInputDeadline, userInputDeadline, true));
             //display.DisplayQuestion("Is this task already done? Y/N: ");
             //string userInputMark = input.GetMark();
             display.DisplayQuestion("Select task group: \n" +
