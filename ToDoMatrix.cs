@@ -59,7 +59,8 @@ namespace Eisenhower_Matrix
             // Próba sparsowania daty
             if (DateTime.TryParseExact(userInputDeadline, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
             {
-                Console.WriteLine("Your deadline is: " + parsedDate);
+                Console.WriteLine("Your deadline is: " + parsedDate.ToString("dd-MM"));
+                
             }
             else
             {
@@ -68,6 +69,8 @@ namespace Eisenhower_Matrix
 
             DateTime dateTime = DateTime.Now;
             TimeSpan dateDiff = parsedDate - dateTime;
+            Console.WriteLine($"Today is {dateTime.ToString("dd-MM")}");
+            Console.WriteLine($"You have {dateDiff.ToString("dd")} days to your deadline");
             int daysDifference = (int)dateDiff.TotalDays;
             
             if (daysDifference <= 3 && isImportant == true)
