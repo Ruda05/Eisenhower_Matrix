@@ -14,7 +14,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Eisenhower_Matrix
 {
-    internal class ToDoMatrix
+    public class ToDoMatrix
     {
         Dictionary<string, ToDoQuarter> ToDoQuarters = new Dictionary<string, ToDoQuarter>();
         //- 'IU' means that todoQuarter contains important todoItems & urgent
@@ -33,7 +33,7 @@ namespace Eisenhower_Matrix
             //,"IU"[0]
         }
 
-        public void GetQuarters()
+        public static void GetQuarters()
         {
             // Returns a private filed* todoQuarters*.
         }
@@ -46,6 +46,9 @@ namespace Eisenhower_Matrix
 
         public void AddItem(string title, DateTime deadline, bool isImportant)
         {
+            var toDoQuarterAdd = new ToDoQuarter();
+            // toDoQuarters["IU"].Add(toDoQuarterAdd.AddItem(title, deadline.ToString("dd-MM"));
+            
             // Adds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
             // This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
             //ToDoQuarters[importance].AddItem

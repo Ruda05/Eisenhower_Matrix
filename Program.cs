@@ -18,8 +18,10 @@ display.DisplayQuestion("Input deadline in format DD-MM: ");
 string userInputDeadline = input.GetDeadline();
 display.DisplayQuestion("Is your task important? (Y/N)");
 string importanceStatusINPUT = input.GetImportanceStatus();
+display.DisplayQuestion("Is this task already done? Y/N: ");
+Console.WriteLine($"Your task is already done:{input.IsDone(input.GetStatus())}");
 Console.WriteLine(toDoMatrix.EstimateUrgency(userInputDeadline, userInputDeadline, input.IsImportant(importanceStatusINPUT)));
-//display.DisplayQuestion("Is this task already done? Y/N: ");
+
 //string userInputMark = input.GetMark();
 //display.DisplayQuestion("Select task group: \n" +
 //                        "1] Important and Urgent\n" +

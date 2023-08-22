@@ -87,6 +87,29 @@ namespace Eisenhower_Matrix
             else { return false; }
         }
 
+        public string GetStatus()
+        {
+            var statusInput = Console.ReadLine();
+
+            if (statusInput != "")
+            {
+                return statusInput;
+            }
+            else
+            {
+                return "No status";
+            }
+        }
+        
+        public bool IsDone(string statusInput)
+        {
+            if (statusInput == "Y")
+            {
+                return true;
+            }
+            else { return false; }
+        }
+
         
     }
 }
