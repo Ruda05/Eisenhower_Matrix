@@ -7,6 +7,7 @@ Console.WriteLine("Hello, Eisenhower!");
 ToDoItem todoItem = new ToDoItem();
 var input = new Input();
 var display = new Display();
+var toDoItem = new ToDoItem();
 var toDoMatrix = new ToDoMatrix();
 var importantUrgent = new ToDoQuarter();
 var notImportantUrgent = new ToDoQuarter();
@@ -15,12 +16,13 @@ var notImportantNotUrgent = new ToDoQuarter();
 display.DisplayQuestion("Input task title: ");
 string userInputTitle = input.GetTitle();
 display.DisplayQuestion("Input deadline in format DD-MM: ");
-string userInputDeadline = input.GetDeadline();
+var deadline = input.GetDeadline();
+
 display.DisplayQuestion("Is your task important? (Y/N)");
 string importanceStatusINPUT = input.GetImportanceStatus();
 display.DisplayQuestion("Is this task already done? Y/N: ");
 Console.WriteLine($"Your task is already done:{input.IsDone(input.GetStatus())}");
-Console.WriteLine(toDoMatrix.EstimateUrgency(userInputDeadline, userInputDeadline, input.IsImportant(importanceStatusINPUT)));
+Console.WriteLine(toDoMatrix.EstimateUrgency(deadline, input.IsImportant(importanceStatusINPUT)));
 
 //string userInputMark = input.GetMark();
 //display.DisplayQuestion("Select task group: \n" +
@@ -31,7 +33,7 @@ Console.WriteLine(toDoMatrix.EstimateUrgency(userInputDeadline, userInputDeadlin
 //                       "Your choice: ");
 
 
-importantUrgent.AddItem(userInputTitle, userInputDeadline);
+importantUrgent.AddItem(userInputTitle, deadline);
 Console.WriteLine("Important and Urgent:");
 Console.WriteLine(importantUrgent);
 Console.WriteLine("Important but Not urgent:");

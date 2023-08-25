@@ -15,6 +15,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Eisenhower_Matrix
 {
     public class ToDoMatrix
+
     {
         Dictionary<string, ToDoQuarter> ToDoQuarters = new Dictionary<string, ToDoQuarter>();
         //- 'IU' means that todoQuarter contains important todoItems & urgent
@@ -44,33 +45,29 @@ namespace Eisenhower_Matrix
             // Status should be one of the possible statuses('IU', 'IN', 'NU', 'NN').
         }
 
-        public void AddItem(string title, DateTime deadline, bool isImportant)
+        public void AddItems(string title, DateTime deadline, bool isImportant)
         {
-            var toDoQuarterAdd = new ToDoQuarter();
-            // toDoQuarters["IU"].Add(toDoQuarterAdd.AddItem(title, deadline.ToString("dd-MM"));
             
+            string quarterKey = EstimateUrgency(deadline, isImportant);
+            
+            AddItems(ToDoQuarters, ToDoQuarters[quarterKey], ToDoItem.CreateToDoItem(title, deadline));
+
+            
+
             // Adds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
             // This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
             //ToDoQuarters[importance].AddItem
         }
 
-        public string EstimateUrgency(string userInputDeadline, string deadline, bool isImportant)
+        public string EstimateUrgency(DateTime deadline, bool isImportant)
         {
-            string dateFormat = "dd-MM";
-            DateTime parsedDate;
+
 
             // Próba sparsowania daty
-            if (DateTime.TryParseExact(userInputDeadline, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
-            {
-                Console.WriteLine("Your deadline is: " + parsedDate.ToString("dd-MM"));
-            }
-            else
-            {
-                Console.WriteLine("Wrong format of date.");
-            }
 
+            
             DateTime dateTime = DateTime.Now;
-            TimeSpan dateDiff = parsedDate - dateTime;
+            TimeSpan dateDiff = deadline - dateTime;
             Console.WriteLine($"Today is {dateTime.ToString("dd-MM")}");
             Console.WriteLine($"You have {dateDiff.ToString("dd")} days to your deadline");
             int daysDifference = (int)dateDiff.TotalDays;

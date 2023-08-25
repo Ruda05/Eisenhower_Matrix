@@ -21,7 +21,7 @@ namespace Eisenhower_Matrix
             List<string> ToDoQuarter = new List<string>();
         }
 
-        public void AddItem(string title, string deadline)
+        public void AddItem(string title, DateTime deadline)
         {
             var toDoItem = todoItem.CreateToDoItem(title, deadline);
             ToDoItems.Add(toDoItem);

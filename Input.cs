@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 namespace Eisenhower_Matrix
 {
@@ -27,18 +28,20 @@ namespace Eisenhower_Matrix
         }
 
 
-        public string GetDeadline()
+        public DateTime GetDeadline()
         {
             // input provides only day and month - year is firmed to 2023
             var deadlineInput = Console.ReadLine();
-            if (deadlineInput != null)
+            
+            string dateFormat = "dd-MM";
+
+            DateTime parsedDate;
+            if (DateTime.TryParseExact(deadlineInput, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
             {
-                return deadlineInput;
+                return parsedDate;
             }
-            else
-            {
-                return "No deadline";
-            }
+            return parsedDate;
+                  
         }
 
 
