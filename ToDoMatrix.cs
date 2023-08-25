@@ -77,19 +77,19 @@ namespace Eisenhower_Matrix
             
             if (daysDifference <= 3 && isImportant == true)
             {
-                return "ImportantUrgent (IU)";
+                return "IU";
             }
             if (daysDifference > 3 && isImportant == true)
             { 
-                return "ImportantNotUrgent (IN)"; 
+                return "IN"; 
             }
             if (daysDifference <= 3 && isImportant == false)
             {
-                return "NotImportantUrgent (NU)";
+                return "NU";
             }
             else
             {
-                return "NotImportantNotUrgent (NN)";
+                return "NN";
             }
         }
 
