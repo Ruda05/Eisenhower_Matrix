@@ -83,12 +83,7 @@ namespace Eisenhower_Matrix
 
         public bool IsImportant(string importanceStatusInput)
         {
-            if (importanceStatusInput == "Y")
-            {
-                return true;
-            }
-            return false;
-            //return importanceStatusINPUT == "Y";
+            return importanceStatusInput == "Y";
         }
 
         public string GetStatus()
@@ -107,11 +102,7 @@ namespace Eisenhower_Matrix
         
         public bool IsDone(string statusInput)
         {
-            if (statusInput == "Y")
-            {
-                return true;
-            }
-            else { return false; }
+            return statusInput == "Y";
         }
 
         
