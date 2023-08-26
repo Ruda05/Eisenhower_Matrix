@@ -30,8 +30,6 @@ namespace Eisenhower_Matrix
             ToDoQuarters.Add("NU", new ToDoQuarter());
             ToDoQuarters.Add("NN", new ToDoQuarter());
 
-            //Eisenhower_Matrix { "IU": <List>, "IN": <List>}
-            //,"IU"[0]
         }
 
         public static void GetQuarters()
@@ -61,26 +59,22 @@ namespace Eisenhower_Matrix
         {
             DateTime dateTime = DateTime.Now;
             TimeSpan dateDiff = deadline - dateTime;
-            Console.WriteLine($"Today is {dateTime.ToString("dd-MM")}");
-            Console.WriteLine($"You have {dateDiff.ToString("dd")} days to your deadline");
             int daysDifference = (int)dateDiff.TotalDays;
             
             if (daysDifference <= 3 && isImportant == true)
             {
                 return "IU";
             }
-            if (daysDifference > 3 && isImportant == true)
+            else if (daysDifference > 3 && isImportant == true)
             { 
                 return "IN"; 
             }
-            if (daysDifference <= 3 && isImportant == false)
+            else if (daysDifference <= 3 && isImportant == false)
             {
                 return "NU";
-            }
-            else
-            {
-                return "NN";
-            }
+            } 
+            return "NN";
+            
         }
 
         public void ArchiveItems()
