@@ -27,6 +27,7 @@ namespace Eisenhower_Matrix
 
         public void RemoveItem(int index)
         {
+            ToDoItems.Remove(ToDoItems[index]);
             // Removes *TodoItem* object using *index* of list *todoItems*
         }
         public void ArchiveItems()
