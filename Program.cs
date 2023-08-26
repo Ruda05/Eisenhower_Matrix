@@ -4,48 +4,29 @@ using System.Globalization;
 
 
 Console.WriteLine("Hello, Eisenhower!");
-ToDoItem todoItem = new ToDoItem();
 var input = new Input();
 var display = new Display();
-var toDoItem = new ToDoItem();
-var toDoMatrix = new ToDoMatrix();
-var importantUrgent = new ToDoQuarter();
-var notImportantUrgent = new ToDoQuarter();
-var importantNotUrgent = new ToDoQuarter();
-var notImportantNotUrgent = new ToDoQuarter();
-display.DisplayQuestion("Input task title: ");
-string userInputTitle = input.GetTitle();
-display.DisplayQuestion("Input deadline in format DD-MM: ");
-var deadline = input.GetDeadline();
+ToDoMatrix toDoMatrix = new ToDoMatrix();
 
-display.DisplayQuestion("Is your task important? (Y/N)");
-string importanceStatusINPUT = input.GetImportanceStatus();
-display.DisplayQuestion("Is this task already done? Y/N: ");
-Console.WriteLine($"Your task is already done:{input.IsDone(input.GetStatus())}");
-Console.WriteLine(toDoMatrix.EstimateUrgency(deadline, input.IsImportant(importanceStatusINPUT)));
+bool isActive = true;
+while (isActive)
+{
+    display.DisplayQuestion("Input task title: ");
+    string userInputTitle = input.GetTitle();
+    display.DisplayQuestion("Input deadline in format DD-MM: ");
+    var deadline = input.GetDeadline();
+    display.DisplayQuestion("Is your task important? (Y/N)");
+    string importanceStatusINPUT = input.GetImportanceStatus();
+    display.DisplayQuestion("Is this task already done? Y/N: ");
+    Console.WriteLine($"Your task is already done:{input.IsDone(input.GetStatus())}");
+    toDoMatrix.AddItem(userInputTitle, deadline, importanceStatusINPUT == "important");
 
-//string userInputMark = input.GetMark();
-//display.DisplayQuestion("Select task group: \n" +
-//                        "1] Important and Urgent\n" +
-//                       "2] Important but Not urgent\n" +
-//                       "3] Not important but Urgent\n" +
-//                       "4] Not important and Not urgent\n" +
-//                       "Your choice: ");
+    display.DisplayQuestion("Do you want to add next task? [Y/N]");
+    string nextTask = Console.ReadLine();
+    isActive = nextTask == "Y";
+}
 
 
-importantUrgent.AddItem(userInputTitle, deadline);
-Console.WriteLine("Important and Urgent:");
-Console.WriteLine(importantUrgent);
-Console.WriteLine("Important but Not urgent:");
-Console.WriteLine(importantNotUrgent);
-Console.WriteLine("Not important but Urgent:");
-Console.WriteLine(notImportantUrgent);
-Console.WriteLine("Not important and Not urgent:");
-Console.WriteLine(notImportantNotUrgent);
 
-//display.DisplayMatrix(importantUrgent, importantNotUrgent, notImportantUrgent, notImportantNotUrgent);
-//var newMatrix = new ToDoMatrix();
-//Console.WriteLine(newMatrix);
-var matrix = new ToDoMatrix();
-//matrix.AddItem(userInputTitle, deadline, importance);
-//Console.WriteLine(matrix.ToString());
+
+Console.WriteLine(toDoMatrix.ToString());

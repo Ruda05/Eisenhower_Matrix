@@ -45,14 +45,12 @@ namespace Eisenhower_Matrix
             // Status should be one of the possible statuses('IU', 'IN', 'NU', 'NN').
         }
 
-        public void AddItems(string title, DateTime deadline, bool isImportant)
+        public void AddItem(string title, DateTime deadline, bool isImportant)
         {
             
             string quarterKey = EstimateUrgency(deadline, isImportant);
-            
-            AddItems(ToDoQuarters, ToDoQuarters[quarterKey], ToDoItem.CreateToDoItem(title, deadline));
+            ToDoQuarters[quarterKey].AddItem(title, deadline);
 
-            
 
             // Adds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
             // This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
@@ -61,11 +59,6 @@ namespace Eisenhower_Matrix
 
         public string EstimateUrgency(DateTime deadline, bool isImportant)
         {
-
-
-            // Próba sparsowania daty
-
-            
             DateTime dateTime = DateTime.Now;
             TimeSpan dateDiff = deadline - dateTime;
             Console.WriteLine($"Today is {dateTime.ToString("dd-MM")}");
@@ -113,36 +106,49 @@ namespace Eisenhower_Matrix
 
             StringBuilder tableBuilder = new StringBuilder();
 
-            tableBuilder.AppendLine("    |            URGENT              |           NOT URGENT           |");
-            tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
-            tableBuilder.AppendLine("    | 1. [ ] 9-6  go to the doctor   |                                |");
-            tableBuilder.AppendLine("    | 2. [x] 11-6 submit assignment  |                                |");
-            tableBuilder.AppendLine("  I |                                |                                |");
-            tableBuilder.AppendLine("  M |                                |                                |");
-            tableBuilder.AppendLine("  P |                                |                                |");
-            tableBuilder.AppendLine("  O |                                |                                |");
-            tableBuilder.AppendLine("  R |                                |                                |");
-            tableBuilder.AppendLine("  T |                                |                                |");
-            tableBuilder.AppendLine("  A |                                |                                |");
-            tableBuilder.AppendLine("  N |                                |                                |");
-            tableBuilder.AppendLine("  T |                                |                                |");
-            tableBuilder.AppendLine("    |                                |                                |");
-            tableBuilder.AppendLine("    |                                |                                |");
-            tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
-            tableBuilder.AppendLine("  N |                                |                                |");
-            tableBuilder.AppendLine("  O |                                |                                |");
-            tableBuilder.AppendLine("  T |                                |                                |");
-            tableBuilder.AppendLine("    |                                |                                |");
-            tableBuilder.AppendLine("  I |                                |                                |");
-            tableBuilder.AppendLine("  M |                                |                                |");
-            tableBuilder.AppendLine("  P |                                |                                |");
-            tableBuilder.AppendLine("  O |                                |                                |");
-            tableBuilder.AppendLine("  R |                                |                                |");
-            tableBuilder.AppendLine("  T |                                |                                |");
-            tableBuilder.AppendLine("  A |                                |                                |");
-            tableBuilder.AppendLine("  N |                                |                                |");
-            tableBuilder.AppendLine("  T |                                |                                |");
-            tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+            foreach (var quarter in ToDoQuarters)
+            {
+                string key = quarter.Key;
+                ToDoQuarter toDoQuarter = quarter.Value;
+                tableBuilder.AppendLine($"{key}\n");
+
+                foreach (ToDoItem item in toDoQuarter.GetItems())
+                {
+                    tableBuilder.AppendLine($"{item.ToString()}\n");
+                }
+            }
+            
+       
+            //tableBuilder.AppendLine("    |            URGENT              |           NOT URGENT           |");
+            //tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+            //tableBuilder.AppendLine("    | 1. [ ] 9-6  go to the doctor   |                                |");
+            //tableBuilder.AppendLine("    | 2. [x] 11-6 submit assignment  |                                |");
+            //tableBuilder.AppendLine("  I |                                |                                |");
+            //tableBuilder.AppendLine("  M |                                |                                |");
+            //tableBuilder.AppendLine("  P |                                |                                |");
+            //tableBuilder.AppendLine("  O |                                |                                |");
+            //tableBuilder.AppendLine("  R |                                |                                |");
+            //tableBuilder.AppendLine("  T |                                |                                |");
+            //tableBuilder.AppendLine("  A |                                |                                |");
+            //tableBuilder.AppendLine("  N |                                |                                |");
+            //tableBuilder.AppendLine("  T |                                |                                |");
+            //tableBuilder.AppendLine("    |                                |                                |");
+            //tableBuilder.AppendLine("    |                                |                                |");
+            //tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+            //tableBuilder.AppendLine("  N |                                |                                |");
+            //tableBuilder.AppendLine("  O |                                |                                |");
+            //tableBuilder.AppendLine("  T |                                |                                |");
+            //tableBuilder.AppendLine("    |                                |                                |");
+            //tableBuilder.AppendLine("  I |                                |                                |");
+            //tableBuilder.AppendLine("  M |                                |                                |");
+            //tableBuilder.AppendLine("  P |                                |                                |");
+            //tableBuilder.AppendLine("  O |                                |                                |");
+            //tableBuilder.AppendLine("  R |                                |                                |");
+            //tableBuilder.AppendLine("  T |                                |                                |");
+            //tableBuilder.AppendLine("  A |                                |                                |");
+            //tableBuilder.AppendLine("  N |                                |                                |");
+            //tableBuilder.AppendLine("  T |                                |                                |");
+            //tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
 
             return tableBuilder.ToString();
 

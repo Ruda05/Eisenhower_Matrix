@@ -11,20 +11,18 @@ namespace Eisenhower_Matrix
 {
     internal class ToDoQuarter
     {
-        
+
         // creates empty list named ToDoItems with strings containing description of ToDoItems objects
-        private List<string> ToDoItems = new List<string>();
-        ToDoItem todoItem = new ToDoItem();
+        private List<ToDoItem> ToDoItems;
 
         public ToDoQuarter()
         {
-            List<string> ToDoQuarter = new List<string>();
+            ToDoItems = new List<ToDoItem>();
         }
 
         public void AddItem(string title, DateTime deadline)
         {
-            var toDoItem = todoItem.CreateToDoItem(title, deadline);
-            ToDoItems.Add(toDoItem);
+            ToDoItems.Add(new ToDoItem(title, deadline));
         }
 
         public void RemoveItem(int index)
@@ -41,9 +39,9 @@ namespace Eisenhower_Matrix
             // Returns* TodoItem* object from *index* of list* todoItems*.
         }
 
-        public void GetItems()
+        public List<ToDoItem> GetItems()
         {
-            // Returns private field *todoItems*.
+            return ToDoItems;
         }
 
         public override string ToString()
