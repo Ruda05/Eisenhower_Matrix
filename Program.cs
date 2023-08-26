@@ -9,6 +9,7 @@ ToDoMatrix toDoMatrix = new ToDoMatrix();
 bool isActive = true;
 while (isActive)
 {
+    Console.Clear();
     display.DisplayQuestion("Input task title: ");
     string userInputTitle = input.GetTitle();
     display.DisplayQuestion("Input deadline in format DD-MM: ");
@@ -26,5 +27,5 @@ while (isActive)
 
 
 
-
+Console.Clear();
 Console.WriteLine(toDoMatrix.ToString());
