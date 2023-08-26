@@ -39,7 +39,7 @@ namespace Eisenhower_Matrix
         public override string ToString()
         {
             ItemMark = IsDone ? 'x' : ' ';
-            return $"[{ItemMark}] {Deadline.Month}-{Deadline.Day}-2023 {Title}";
+            return $"[{ItemMark}] {Deadline.Month}-{Deadline.Day} {Title}";
         }
 
 
