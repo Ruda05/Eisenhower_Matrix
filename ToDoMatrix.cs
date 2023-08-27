@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Text;
 
 namespace Eisenhower_Matrix
 {
@@ -99,16 +87,39 @@ namespace Eisenhower_Matrix
             //return stringBuilder.ToString();
 
             StringBuilder tableBuilder = new StringBuilder();
+            string displayKey;
 
             foreach (var quarter in ToDoQuarters)
             {
                 string key = quarter.Key;
+                switch (key)
+                {
+                    case "IU":
+                        displayKey = "Important & Urgent";
+                        break;
+                    case "IN":
+                        displayKey = "Important & Not Urgent";
+                        break;
+                    case "NU":
+                        displayKey = "Not Important & Urgent";
+                        break;
+                    case "NN":
+                        displayKey = "Not Important & Not Urgent";
+                        break;
+                    default:
+                        displayKey = " ";
+                        break;
+                }
+
+                int index = 1;
+
                 ToDoQuarter toDoQuarter = quarter.Value;
-                tableBuilder.AppendLine($"{key}\n");
+                tableBuilder.AppendLine($"{displayKey}\n");
 
                 foreach (ToDoItem item in toDoQuarter.GetItems())
                 {
-                    tableBuilder.AppendLine($"{item.ToString()}\n");
+                    tableBuilder.AppendLine($"{index}. {item.ToString()}\n");
+                    index++;
                 }
             }
             

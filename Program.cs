@@ -1,12 +1,10 @@
-﻿using Eisenhower_Matrix;
-using Microsoft.VisualBasic;
-using System.Globalization;
-
-namespace Eisenhower_Matrix
+﻿namespace Eisenhower_Matrix
 {
 
     internal class Program
     {
+        public static string SelectedQuarter { get; private set; } = "IU";
+        public static int SelectedTask { get; private set; } = 1;
         static void Main()
         {
             var input = new Input();
