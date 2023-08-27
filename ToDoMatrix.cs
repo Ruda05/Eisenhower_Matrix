@@ -29,6 +29,7 @@ namespace Eisenhower_Matrix
         {
             // Returns a chosen* TodoQuarter*object from a map *todoQuarters *.
             // Status should be one of the possible statuses('IU', 'IN', 'NU', 'NN').
+            // return ToDoQuarters[status];
         }
 
         public void AddItem(string title, DateTime deadline, bool isImportant)
@@ -88,6 +89,7 @@ namespace Eisenhower_Matrix
 
             StringBuilder tableBuilder = new StringBuilder();
             string displayKey;
+            int groupIndex = 1;
 
             foreach (var quarter in ToDoQuarters)
             {
@@ -111,15 +113,17 @@ namespace Eisenhower_Matrix
                         break;
                 }
 
-                int index = 1;
 
                 ToDoQuarter toDoQuarter = quarter.Value;
-                tableBuilder.AppendLine($"{displayKey}\n");
+                tableBuilder.AppendLine($"{groupIndex}] {displayKey}\n");
+                groupIndex++;
+
+                int taskIndex = 1;
 
                 foreach (ToDoItem item in toDoQuarter.GetItems())
                 {
-                    tableBuilder.AppendLine($"{index}. {item.ToString()}\n");
-                    index++;
+                    tableBuilder.AppendLine($"\t{taskIndex}. {item.ToString()}\n");
+                    taskIndex++;
                 }
             }
             

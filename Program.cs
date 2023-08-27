@@ -19,7 +19,7 @@
                 {
                     Console.Clear();
                     Console.WriteLine(toDoMatrix.ToString());
-                    display.DisplayQuestion("Select an option:\n[A] Add\n[Q] Quit\nYour choice: ");
+                    display.DisplayQuestion("Select an option:\n[A]dd\n[D]elete\n[Q]uit\nYour choice: ");
                     currentOption = Console.ReadLine();
                     if (currentOption == "Q") 
                     { 
@@ -48,6 +48,34 @@
                         currentOption = "T";
                     }
 
+                }
+                else if (currentOption == "D") 
+                {
+                    display.DisplayQuestion("Which task to delete?\nSelect group [1-4]:");
+                    string groupToDelete = Console.ReadLine();
+                    string groupMark;
+                    switch (groupToDelete)
+                    {
+                        case "1":
+                            groupMark = "IU";
+                            break;
+                        case "2":
+                            groupMark = "IN";
+                            break;
+                        case "3":
+                            groupMark = "NU";
+                            break;
+                        case "4":
+                            groupMark = "NN";
+                            break;
+                        default:
+                            groupMark = " ";
+                            break;
+                    }
+                    display.DisplayQuestion("Select task number:");
+                    string taskToDelete = Console.ReadLine();
+
+                    currentOption = "T";
                 }
             }
             Console.Clear();
