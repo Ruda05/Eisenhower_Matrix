@@ -122,7 +122,17 @@ namespace Eisenhower_Matrix
 
                 foreach (ToDoItem item in toDoQuarter.GetItems())
                 {
-                    tableBuilder.AppendLine($"\t{taskIndex}. {item.ToString()}\n");
+                    string line;
+                    if (taskIndex == Program.SelectedTask)
+                    {
+                        line = $"\t{taskIndex}. {item.ToString()}";
+                        line = $"\u001b[31m{line}\u001b[0m"; // ANSI escape code for red text color
+                    }
+                    else
+                    {
+                        line = $"\t{taskIndex}. {item.ToString()}";
+                    }
+                    tableBuilder.AppendLine(line);
                     taskIndex++;
                 }
             }
