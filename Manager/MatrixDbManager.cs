@@ -12,4 +12,9 @@ public class MatrixDbManager
     {
         toDoItemDao.Add(new ToDoItem("Shopping Center", DateTime.Now));
     }
+
+    public void UpdateItem()
+    {
+        toDoItemDao.Update(new );
+    }
 }

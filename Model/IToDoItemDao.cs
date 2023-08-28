@@ -15,6 +15,20 @@ public interface IToDoItemDao
     public void Update(ToDoItem toDoItem);
 
     /// <summary>
+    /// Get object by ID.
+    /// </summary>
+    /// <param name="id">ID to search by</param>
+    /// <returns>An object with a given ID, or null if not found.</returns>
+    public ToDoItem Get(int id);
+
+    /// <summary>
+    /// Delete object by ID.
+    /// </summary>
+    /// <param name="id">ID of the object to delete</param>
+    /// <returns>True if object was found and deleted and false if not found</returns>
+    public bool Delete(int id);
+
+    /// <summary>
     /// Get all objects.
     /// </summary>
     /// <returns>List of all objects of this type in the database.</returns>
