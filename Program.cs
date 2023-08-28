@@ -1,4 +1,6 @@
-﻿namespace Eisenhower_Matrix
+﻿using Eisenhower_Matrix.Model;
+
+namespace Eisenhower_Matrix
 {
 
     internal class Program

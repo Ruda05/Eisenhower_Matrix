@@ -15,6 +15,7 @@ public class MatrixDbManager
 
     public void UpdateItem()
     {
-        toDoItemDao.Update(new );
+        ToDoItem toDoItem = toDoItemDao.Get(1); // getting an item with index 1.
+        toDoItemDao.Update(toDoItem);
     }
 }
