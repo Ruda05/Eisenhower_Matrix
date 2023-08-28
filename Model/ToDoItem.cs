@@ -1,6 +1,6 @@
-﻿namespace Eisenhower_Matrix
+﻿namespace Eisenhower_Matrix.Model
 {
-    internal class ToDoItem
+    public class ToDoItem
     {
         private string? Title { get; set; }
         private DateTime Deadline { get; set; }

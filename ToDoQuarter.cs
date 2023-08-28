@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Eisenhower_Matrix.Model;
 
 namespace Eisenhower_Matrix
 {
