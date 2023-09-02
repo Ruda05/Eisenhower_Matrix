@@ -7,15 +7,15 @@ namespace Eisenhower_Matrix.Manager;
 public class MatrixDbManager
 {
    
-    public string? connectionString => ConfigurationManager.AppSettings["connectionString"];
+    private string? connectionString => ConfigurationManager.AppSettings["connectionString"];
     private IToDoItemDao toDoItemDao;
     public MatrixDbManager()
     {
         toDoItemDao = new ToDoItemDao(connectionString);
     }
-    public void AddItem()
+    public void AddItem(ToDoItem toDoItem)
     {
-        toDoItemDao.Add(new ToDoItem("Radek", DateTime.Now));
+        toDoItemDao.Add(toDoItem);
     }
 
     public void UpdateItem()

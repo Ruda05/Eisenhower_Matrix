@@ -21,7 +21,7 @@ namespace Eisenhower_Matrix
             Console.WriteLine(testItem.Title);
             testItem.makeImportant();
             Console.WriteLine(testItem.IsImportant);
-            manager.AddItem();
+            manager.AddItem(testItem);
 
 
             //var input = new Input();
