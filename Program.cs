@@ -8,10 +8,22 @@ namespace Eisenhower_Matrix
     {
        // public static string SelectedQuarter { get; private set; } = "IU";
        // public static int SelectedTask { get; private set; } = 1;
-        static void Main()
+        public static void Main(string[] args)
         {
             var manager = new MatrixDbManager();
+
             Console.WriteLine(manager.TestConnection());
+            var testItem = new ToDoItem("Radek", DateTime.Now.AddDays(7));
+            Console.WriteLine(testItem.IsDone);
+            testItem.Mark();
+            Console.WriteLine(testItem.IsDone);
+            Console.WriteLine(testItem.Deadline);
+            Console.WriteLine(testItem.Title);
+            testItem.makeImportant();
+            Console.WriteLine(testItem.IsImportant);
+            manager.AddItem();
+
+
             //var input = new Input();
             //var display = new Display();
             //ToDoMatrix toDoMatrix = new ToDoMatrix();

@@ -2,12 +2,13 @@
 
 public class ToDoItem
 {
-    private string? Title { get; set; }
-    private DateTime Deadline { get; set; }
-    private bool IsDone { get; set; } = false;
-    private char ItemMark { get; set; }
+    public string Title { get; set; }
+    public DateTime Deadline { get; set; }
+    public bool IsImportant { get; set; } = false;
+    public bool IsDone { get; set; } = false;
+    public char ItemMark { get; set; }
 
-    public ToDoItem(string? title, DateTime deadline)
+    public ToDoItem(string title, DateTime deadline)
     {
         Title = title;
         Deadline = deadline;
@@ -20,6 +21,10 @@ public class ToDoItem
         return ToString();
     }
 
+    public void makeImportant()
+    {
+        IsImportant = true;
+    }
     public void Mark()
     {
         IsDone = true;
