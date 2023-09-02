@@ -21,7 +21,7 @@ public class ToDoItem
         return ToString();
     }
 
-    public void makeImportant()
+    public void MakeImportant()
     {
         IsImportant = true;
     }

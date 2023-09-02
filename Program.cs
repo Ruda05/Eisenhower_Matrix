@@ -19,7 +19,7 @@ namespace Eisenhower_Matrix
             Console.WriteLine(testItem.IsDone);
             Console.WriteLine(testItem.Deadline);
             Console.WriteLine(testItem.Title);
-            testItem.makeImportant();
+            testItem.MakeImportant();
             Console.WriteLine(testItem.IsImportant);
             manager.AddItem(testItem);
 
