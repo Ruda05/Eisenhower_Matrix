@@ -23,7 +23,6 @@ namespace Eisenhower_Matrix
             Console.WriteLine(testItem.IsImportant);
             manager.AddItem(testItem);
 
-
             //var input = new Input();
             //var display = new Display();
             //ToDoMatrix toDoMatrix = new ToDoMatrix();
