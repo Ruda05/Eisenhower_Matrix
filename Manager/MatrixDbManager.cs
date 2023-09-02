@@ -9,10 +9,17 @@ public class MatrixDbManager
    
     private string? connectionString => ConfigurationManager.AppSettings["connectionString"];
     private IToDoItemDao toDoItemDao;
+
     public MatrixDbManager()
     {
+        if (string.IsNullOrEmpty(connectionString))
+        {
+            throw new InvalidOperationException("Connection string is missing or empty.");
+        }
+
         toDoItemDao = new ToDoItemDao(connectionString);
     }
+
     public void AddItem(ToDoItem toDoItem)
     {
         toDoItemDao.Add(toDoItem);
