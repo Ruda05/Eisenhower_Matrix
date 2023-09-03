@@ -22,6 +22,8 @@ namespace Eisenhower_Matrix
             testItem.MakeImportant();
             Console.WriteLine(testItem.IsImportant);
             Console.WriteLine(testItem.Id);
+            testItem.Id = 1;
+            manager.UpdateItem(testItem);
             //Add item - adding item to the database - Test
             //manager.AddItem(testItem);
 

@@ -38,7 +38,34 @@ public class ToDoItemDao : IToDoItemDao
     }
     public void Update(ToDoItem toDoItem)
     {
-        throw new NotImplementedException();
+        const string updateItemCommand = @"UPDATE todoitems SET title = @title, 
+                                                             deadline = @deadline, 
+                                                             important = @important, 
+                                                             completed = @completed 
+                                        WHERE id = @itemId";
+        try
+        {
+            using var connection = new SqlConnection(connectionString);
+            var cmd = new SqlCommand(updateItemCommand, connection);
+            cmd.Parameters.AddWithValue("@itemId", toDoItem.Id);
+            cmd.Parameters.AddWithValue("@title", toDoItem.Title);
+            cmd.Parameters.AddWithValue("@deadline", toDoItem.Deadline.ToString("yyyy-MM-dd"));
+            int isImportantValue = toDoItem.IsImportant ? 1 : 0;
+            int isDoneValue = toDoItem.IsDone ? 1 : 0;
+            cmd.Parameters.AddWithValue("@important", isImportantValue);
+            cmd.Parameters.AddWithValue("@completed", isDoneValue);
+
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+
+            cmd.ExecuteScalar();
+        }
+        catch (SqlException e)
+        {
+            throw e;
+        }
     }
     public bool Delete(int id)
     {
