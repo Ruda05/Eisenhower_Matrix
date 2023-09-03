@@ -15,13 +15,6 @@ public interface IToDoItemDao
     public void Update(ToDoItem toDoItem);
 
     /// <summary>
-    /// Get object by ID.
-    /// </summary>
-    /// <param name="id">ID to search by</param>
-    /// <returns>An object with a given ID, or null if not found.</returns>
-    public ToDoItem Get(int id);
-
-    /// <summary>
     /// Delete object by ID.
     /// </summary>
     /// <param name="id">ID of the object to delete</param>

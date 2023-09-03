@@ -40,10 +40,6 @@ public class ToDoItemDao : IToDoItemDao
     {
         throw new NotImplementedException();
     }
-    public ToDoItem Get(int id)
-    { 
-        throw new NotImplementedException(); 
-    }
     public bool Delete(int id)
     {
         throw new NotImplementedException();
