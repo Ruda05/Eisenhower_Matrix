@@ -6,7 +6,9 @@ public class ToDoItem
     public DateTime Deadline { get; set; }
     public bool IsImportant { get; set; } = false;
     public bool IsDone { get; set; } = false;
+    public int Id { get; set; } = 0;
     public char ItemMark { get; set; }
+    
 
     public ToDoItem(string title, DateTime deadline)
     {
