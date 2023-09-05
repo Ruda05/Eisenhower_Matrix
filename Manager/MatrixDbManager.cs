@@ -25,10 +25,9 @@ public class MatrixDbManager
         toDoItemDao.Add(toDoItem);
     }
 
-    public void UpdateItem(ToDoItem toDoItem)
-    {
-        toDoItemDao.Update(toDoItem);
-    }
+    public void UpdateItem(ToDoItem toDoItem) => toDoItemDao.Update(toDoItem);
+
+    public List<ToDoItem> GetAllItems() => toDoItemDao.GetAll();
 
     public bool TestConnection()
     {

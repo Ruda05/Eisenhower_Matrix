@@ -96,7 +96,38 @@ public class ToDoItemDao : IToDoItemDao
     }
     public List<ToDoItem> GetAll()
     {
-        throw new NotImplementedException();
+        const string getAllCommand = @"SELECT id, title, deadline, important, completed FROM todoitems";
+
+        try
+        {
+            var allItems = new List<ToDoItem>();
+            
+            using var connection = new SqlConnection(connectionString);
+            var cmd = new SqlCommand(getAllCommand, connection);
+
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            var reader = cmd.ExecuteReader();
+
+            if (!reader.HasRows) return allItems;
+
+            while (reader.Read())
+            {
+                var id = reader.GetInt32(0);
+                var title = reader["title"] as string;
+                DateTime deadline = reader.GetDateTime(2);
+                ToDoItem Item = new ToDoItem(title, deadline);
+                allItems.Add(Item);
+            }
+            return allItems;
+        }
+        catch (SqlException)
+        {
+            throw;
+        }
+        //throw new NotImplementedException();
     }
 
 }

@@ -13,7 +13,7 @@ namespace Eisenhower_Matrix
             var manager = new MatrixDbManager();
 
             Console.WriteLine(manager.TestConnection());
-            var testItem = new ToDoItem("Radek", DateTime.Now.AddDays(7));
+            var testItem = new ToDoItem("greg", DateTime.Now.AddDays(5));
             Console.WriteLine(testItem.IsDone);
             testItem.Mark();
             Console.WriteLine(testItem.IsDone);
@@ -22,10 +22,11 @@ namespace Eisenhower_Matrix
             testItem.MakeImportant();
             Console.WriteLine(testItem.IsImportant);
             Console.WriteLine(testItem.Id);
-            testItem.Id = 1;
-            manager.UpdateItem(testItem);
+            //testItem.Id = 1;
+            //manager.UpdateItem(testItem);
             //Add item - adding item to the database - Test
             //manager.AddItem(testItem);
+            Console.WriteLine(manager.GetAllItems());
 
 
 
