@@ -12,7 +12,8 @@ public class ToDoItemDao : IToDoItemDao
     }
     public void Add(ToDoItem toDoItem)
     {
-        const string addItemCommand = @"INSERT INTO todoitems (title, deadline, important, completed) VALUES (@title, @deadline, @important, @completed)";
+        const string addItemCommand = @"INSERT INTO todoitems (title, deadline, important, completed) 
+                                               VALUES (@title, @deadline, @important, @completed)";
         try
         {
             using var connection = new SqlConnection(connectionString);
@@ -39,14 +40,15 @@ public class ToDoItemDao : IToDoItemDao
     public void Update(ToDoItem toDoItem)
     {
         const string updateItemCommand = @"UPDATE todoitems SET title = @title, 
-                                                             deadline = @deadline, 
-                                                             important = @important, 
-                                                             completed = @completed 
-                                        WHERE id = @itemId";
+                                                                deadline = @deadline, 
+                                                                important = @important, 
+                                                                completed = @completed 
+                                                            WHERE id = @itemId";
         try
         {
             using var connection = new SqlConnection(connectionString);
             var cmd = new SqlCommand(updateItemCommand, connection);
+
             cmd.Parameters.AddWithValue("@itemId", toDoItem.Id);
             cmd.Parameters.AddWithValue("@title", toDoItem.Title);
             cmd.Parameters.AddWithValue("@deadline", toDoItem.Deadline.ToString("yyyy-MM-dd"));
@@ -62,14 +64,35 @@ public class ToDoItemDao : IToDoItemDao
 
             cmd.ExecuteScalar();
         }
-        catch (SqlException e)
+        catch (SqlException)
         {
-            throw e;
+            throw;
         }
     }
     public bool Delete(int id)
     {
-        throw new NotImplementedException();
+        const string deleteItemCommand = @"DELETE FROM todoitem WHERE id = @itemId";
+        try
+        {
+            using var connection = new SqlConnection(connectionString);
+            var cmd = new SqlCommand(deleteItemCommand, connection);
+
+            cmd.Parameters.AddWithValue("@itemId", id);
+
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+
+            cmd.ExecuteScalar();
+            return true;
+        }
+        catch (SqlException)
+        {
+            return false;
+            throw;
+        }
+        
     }
     public List<ToDoItem> GetAll()
     {
