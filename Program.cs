@@ -30,6 +30,8 @@ namespace Eisenhower_Matrix
             foreach (var item in userList)
             {
                 Console.WriteLine(item);
+                Console.WriteLine(item.IsImportant);
+                Console.WriteLine(item.IsDone);
             }
 
 

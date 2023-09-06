@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using System.Runtime.CompilerServices;
 
 namespace Eisenhower_Matrix.Model;
@@ -118,8 +119,15 @@ public class ToDoItemDao : IToDoItemDao
                 var id = reader.GetInt32(0);
                 var title = reader["title"] as string;
                 DateTime deadline = reader.GetDateTime(2);
-                ToDoItem Item = new ToDoItem(title, deadline);
-                allItems.Add(Item);
+                if (!string.IsNullOrEmpty(title))
+                {
+                    ToDoItem Item = new(title, deadline);
+                    allItems.Add(Item);
+                }
+                else
+                {
+                    Console.WriteLine("Item empty!");
+                }
             }
             return allItems;
         }
