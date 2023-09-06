@@ -131,7 +131,7 @@ public class ToDoItemDao : IToDoItemDao
                 }
                 else
                 {
-                    Console.WriteLine("Item empty!");
+                    Console.WriteLine("Empty item spotted!");
                 }
             }
             return allItems;
