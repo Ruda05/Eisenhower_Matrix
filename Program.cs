@@ -26,7 +26,11 @@ namespace Eisenhower_Matrix
             //manager.UpdateItem(testItem);
             //Add item - adding item to the database - Test
             //manager.AddItem(testItem);
-            Console.WriteLine(manager.GetAllItems());
+            var userList = manager.GetAllItems();
+            foreach (var item in userList)
+            {
+                Console.WriteLine(item);
+            }
 
 
 
