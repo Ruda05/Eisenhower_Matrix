@@ -119,9 +119,14 @@ public class ToDoItemDao : IToDoItemDao
                 var id = reader.GetInt32(0);
                 var title = reader["title"] as string;
                 DateTime deadline = reader.GetDateTime(2);
+                bool importance = reader.GetBoolean(3);
+                bool completed = reader.GetBoolean(4);
+
                 if (!string.IsNullOrEmpty(title))
                 {
                     ToDoItem Item = new(title, deadline);
+                    if (importance) Item.MakeImportant();
+                    if (completed) Item.Mark();
                     allItems.Add(Item);
                 }
                 else
