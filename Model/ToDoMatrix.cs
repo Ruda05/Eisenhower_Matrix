@@ -124,7 +124,7 @@ public class ToDoMatrix
             foreach (ToDoItem item in toDoQuarter.GetItems())
             {
                 string line;
-                if (taskIndex == 1)
+                if (taskIndex == Program.SelectedTask)
                 {
                     line = $"\t{taskIndex}. {item.ToString()}";
                     line = $"\u001b[31m{line}\u001b[0m"; // ANSI escape code for red text color

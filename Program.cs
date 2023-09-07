@@ -7,8 +7,8 @@ namespace Eisenhower_Matrix
 
     internal class Program
     {
-       // public static string SelectedQuarter { get; private set; } = "IU";
-       // public static int SelectedTask { get; private set; } = 1;
+        public static string SelectedQuarter { get; private set; } = "IU";
+        public static int SelectedTask { get; private set; } = 1;
         public static void Main(string[] args)
         {
             var manager = new MatrixDbManager();
@@ -16,7 +16,8 @@ namespace Eisenhower_Matrix
             Console.WriteLine(manager.TestConnection());
             var input = new Input();
             var display = new Display();
-            string currentOption = "T";
+
+            string? currentOption = "T";
 
             /*
             var testItem = new ToDoItem("greg", DateTime.Now.AddDays(5));
@@ -71,7 +72,7 @@ namespace Eisenhower_Matrix
                     if (isImportant) newItem.MakeImportant();
                     manager.AddItem(newItem);
                     display.DisplayQuestion("Do you want to add next task? [Y/N]");
-                    string nextTask = Console.ReadLine();
+                    string? nextTask = Console.ReadLine();
                     if (nextTask == "Y")
                     {
                         currentOption = "A";
