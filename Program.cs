@@ -71,7 +71,7 @@ namespace Eisenhower_Matrix
                     if (isImportant) newItem.MakeImportant();
                     manager.AddItem(newItem);
                     display.DisplayQuestion("Do you want to add next task? [Y/N]");
-                    string nextTask = Console.ReadLine();
+                    string nextTask = Console.ReadLine().ToUpper();
                     if (nextTask == "Y")
                     {
                         currentOption = "A";
