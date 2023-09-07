@@ -50,7 +50,7 @@ namespace Eisenhower_Matrix
                     Console.Clear();
                     Console.WriteLine(toDoMatrix.ToString());
                     display.DisplayQuestion("Select an option:\n[A]dd\n[D]elete\n[Q]uit\nYour choice: ");
-                    currentOption = Console.ReadLine();
+                    currentOption = Console.ReadLine().ToUpper();
                    
                     if (currentOption == "Q")
                     {
