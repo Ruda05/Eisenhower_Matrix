@@ -14,7 +14,6 @@ namespace Eisenhower_Matrix
             var manager = new MatrixDbManager();
 
             Console.WriteLine(manager.TestConnection());
-            ToDoMatrix toDoMatrix = new ToDoMatrix();
             var input = new Input();
             var display = new Display();
             string currentOption = "T";
@@ -34,24 +33,25 @@ namespace Eisenhower_Matrix
             Add item - adding item to the database - Test
             manager.AddItem(testItem);
             */
-            var userList = manager.GetAllItems();
-            foreach (var item in userList)
-            {
-                Console.WriteLine(item);
-                Console.WriteLine(item.IsImportant);
-                Console.WriteLine(item.IsDone);
-                toDoMatrix.AddItem(item.Title, item.Deadline, item.IsImportant);
-            }
 
             bool isActive = true;
             while (isActive)
             {
+
+                ToDoMatrix toDoMatrix = new ToDoMatrix();
+                var userList = manager.GetAllItems();
+                foreach (var item in userList)
+                {
+                    toDoMatrix.AddItem(item.Title, item.Deadline, item.IsImportant);
+                }
+
                 if (currentOption == "T")
                 {
                     Console.Clear();
                     Console.WriteLine(toDoMatrix.ToString());
                     display.DisplayQuestion("Select an option:\n[A]dd\n[D]elete\n[Q]uit\nYour choice: ");
                     currentOption = Console.ReadLine();
+                   
                     if (currentOption == "Q")
                     {
                         isActive = false;
@@ -67,7 +67,9 @@ namespace Eisenhower_Matrix
                     display.DisplayQuestion("Is your task important? (Y/N)");
                     string importanceStatusInput = input.GetImportanceStatus();
                     bool isImportant = input.IsImportant(importanceStatusInput);
-                    toDoMatrix.AddItem(userInputTitle, deadline, isImportant);
+                    ToDoItem newItem = new(userInputTitle, deadline);
+                    if (isImportant) newItem.MakeImportant();
+                    manager.AddItem(newItem);
                     display.DisplayQuestion("Do you want to add next task? [Y/N]");
                     string nextTask = Console.ReadLine();
                     if (nextTask == "Y")
