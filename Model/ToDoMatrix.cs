@@ -132,6 +132,9 @@ public class ToDoMatrix
                 else
                 {
                     line = $"\t{taskIndex}. {item.ToString()}";
+                    var lineLength = line.Length;
+                    var spacesNeeded = 32 - lineLength;
+                    line += $"(długość wiersza: {lineLength}, wymagana ilość spacji na końcu: {spacesNeeded})";
                 }
                 tableBuilder.AppendLine(line);
                 taskIndex++;
