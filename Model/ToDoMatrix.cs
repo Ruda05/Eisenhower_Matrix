@@ -120,10 +120,12 @@ public class ToDoMatrix
             groupIndex++;
 
             int taskIndex = 1;
+            string tableLine = " ";
 
             foreach (ToDoItem item in toDoQuarter.GetItems())
             {
                 string line;
+    
                 if (taskIndex == Program.SelectedTask && quarter.Key == Program.SelectedQuarter)
                 {
                     line = $"\t{taskIndex}. {item.ToString()}";
@@ -134,14 +136,13 @@ public class ToDoMatrix
                     line = $"\t{taskIndex}. {item.ToString()}";
                     var lineLength = line.Length;
                     var spacesNeeded = 32 - lineLength;
-                    line += $"(długość wiersza: {lineLength}, wymagana ilość spacji na końcu: {spacesNeeded})";
+                    var insertLine = line + new string(' ', spacesNeeded);
+                    tableLine = "|" + insertLine + "|";
                 }
-                tableBuilder.AppendLine(line);
+                tableBuilder.AppendLine(tableLine);
                 taskIndex++;
             }
         }
-        
-   
         //tableBuilder.AppendLine("    |            URGENT              |           NOT URGENT           |");
         //tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
         //tableBuilder.AppendLine("    | 1. [ ] 9-6  go to the doctor   |                                |");
