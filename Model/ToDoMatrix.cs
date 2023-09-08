@@ -39,11 +39,11 @@ public class ToDoMatrix
         }
     }
 
-    public void AddItem(int id, string title, DateTime deadline, bool isImportant)
+    public void AddItem(int id, string title, DateTime deadline, bool isImportant, bool isDone)
     {
         
         string quarterKey = EstimateUrgency(deadline, isImportant);
-        ToDoQuarters[quarterKey].AddItem(id, title, deadline);
+        ToDoQuarters[quarterKey].AddItem(id, title, deadline, isDone);
 
 
         // Adds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.

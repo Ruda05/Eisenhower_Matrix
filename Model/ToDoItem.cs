@@ -10,11 +10,12 @@ public class ToDoItem
     public char ItemMark { get; set; }
     
 
-    public ToDoItem(int id, string title, DateTime deadline)
+    public ToDoItem(int id, string title, DateTime deadline, bool isDone)
     {
         Id = id;
         Title = title;
         Deadline = deadline;
+        IsDone = isDone;
     }
 
     public string CreateToDoItem(string title, DateTime deadline)
@@ -40,7 +41,7 @@ public class ToDoItem
 
     public override string ToString()
     {
-        ItemMark = IsDone ? 'x' : ' ';
+        ItemMark = IsDone ? 'X' : ' ';
         return $"[{ItemMark}] {Deadline.Day}-{Deadline.Month} {Title}";
     }
 

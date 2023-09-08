@@ -8,7 +8,7 @@ namespace Eisenhower_Matrix
     internal class Program
     {
         public static string SelectedQuarter { get; private set; } = "IU";
-        public static int SelectedTask { get; private set; } = 2;
+        public static int SelectedTask { get; private set; } = 1;
         public static void Main(string[] args)
         {
            
@@ -45,26 +45,33 @@ namespace Eisenhower_Matrix
                 var userList = manager.GetAllItems();
                 foreach (var item in userList)
                 {
-                    toDoMatrix.AddItem(item.Id, item.Title, item.Deadline, item.IsImportant);
+                    toDoMatrix.AddItem(item.Id, item.Title, item.Deadline, item.IsImportant, item.IsDone);
                 }
 
-                var itemList = toDoMatrix.GetQuarter(SelectedQuarter);
-                var selectedItem = itemList.ToDoItems[SelectedTask];
+                
 
                 if (currentOption == "T")
                 {
                     Console.Clear();
-                    Console.WriteLine(selectedItem.Id);
-                    Console.WriteLine(selectedItem.IsImportant);
-                    selectedItem.Mark();
-                    Console.WriteLine(selectedItem);
                     Console.WriteLine(toDoMatrix.ToString());
-                    display.DisplayQuestion("Select an option:\n[A]dd\n[D]elete\n[Q]uit\nYour choice: ");
+                    display.DisplayQuestion("Select an option:\n[A]dd\n[D]elete\n[M]ark task as done\n[Q]uit\nYour choice: ");
                     currentOption = Console.ReadLine().ToUpper();
                    
                     if (currentOption == "Q")
                     {
                         isActive = false;
+                    }
+                    if (currentOption == "M")
+                    {
+                        var itemList = toDoMatrix.GetQuarter(SelectedQuarter);
+                        var selectedItem = itemList.ToDoItems[SelectedTask];
+                        if (SelectedQuarter == "IU" || SelectedQuarter == "IN")
+                        {
+                            selectedItem.MakeImportant();
+                        }
+                        selectedItem.Mark();
+                        manager.UpdateItem(selectedItem);
+                        currentOption = "T";
                     }
                 }
                 else if (currentOption == "A")
@@ -78,7 +85,7 @@ namespace Eisenhower_Matrix
                     display.DisplayQuestion("Is your task important? (Y/N)");
                     string importanceStatusInput = input.GetImportanceStatus();
                     bool isImportant = input.IsImportant(importanceStatusInput);
-                    ToDoItem newItem = new(id, userInputTitle, deadline);
+                    ToDoItem newItem = new(id, userInputTitle, deadline, false);
                     if (isImportant) newItem.MakeImportant();
                     manager.AddItem(newItem);
                     display.DisplayQuestion("Do you want to add next task? [Y/N]");
