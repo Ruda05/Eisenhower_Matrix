@@ -7,8 +7,8 @@ namespace Eisenhower_Matrix
 
     internal class Program
     {
-        public static string SelectedQuarter { get; private set; } = "IU";
-        public static int SelectedTask { get; private set; } = 1;
+        public static string SelectedQuarter { get; private set; } = "NU";
+        public static int SelectedTask { get; private set; } = 3;
         public static void Main(string[] args)
         {
            
@@ -54,14 +54,58 @@ namespace Eisenhower_Matrix
                 {
                     Console.Clear();
                     Console.WriteLine(toDoMatrix.ToString());
-                    display.DisplayQuestion("Select an option:\n[A]dd\n[D]elete\n[M]ark task as done\n[Q]uit\nYour choice: ");
+                    display.DisplayQuestion("Select an option:\n[A]dd task\n[D]elete selected task\n[S]elect task\n[Q]uit\nYour choice: ");
                     currentOption = Console.ReadLine().ToUpper();
                    
                     if (currentOption == "Q")
                     {
                         isActive = false;
                     }
-                    if (currentOption == "M")
+                    
+                    
+                }
+
+                else if (currentOption == "S")
+                {
+                    Console.Clear();
+                    Console.WriteLine(toDoMatrix.ToString());
+                    display.DisplayQuestion("Use up and down arrows to switch between tasks or use tab to switch between quarters.\nPress spacebar to mark task as done.\nPress enter to return to main menu.");
+                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                    if (keyInfo.Key == ConsoleKey.DownArrow)
+                    {
+                        SelectedTask++;
+                    }
+                    if (keyInfo.Key == ConsoleKey.UpArrow)
+                    {
+                        SelectedTask--;
+                    }
+                    if (keyInfo.Key == ConsoleKey.Enter)
+                    {
+                        currentOption = "T";
+                    }
+                    if (keyInfo.Key == ConsoleKey.Tab)
+                    {
+                        switch (SelectedQuarter)
+                        {
+                            case "IU":
+                                SelectedQuarter = "IN";
+                                SelectedTask = 0;
+                                break;
+                            case "IN":
+                                SelectedQuarter = "NU";
+                                SelectedTask = 0;
+                                break;
+                            case "NU":
+                                SelectedQuarter = "NN";
+                                SelectedTask = 0;
+                                break;
+                            case "NN":
+                                SelectedQuarter = "IU";
+                                SelectedTask = 0;
+                                break;
+                        }
+                    }
+                    if (keyInfo.Key == ConsoleKey.Spacebar)
                     {
                         var itemList = toDoMatrix.GetQuarter(SelectedQuarter);
                         var selectedItem = itemList.ToDoItems[SelectedTask];
@@ -69,10 +113,17 @@ namespace Eisenhower_Matrix
                         {
                             selectedItem.MakeImportant();
                         }
-                        selectedItem.Mark();
+                        if (selectedItem.IsDone == true)
+                        {
+                            selectedItem.Unmark();
+                        }
+                        else
+                        {
+                            selectedItem.Mark();
+                        }
                         manager.UpdateItem(selectedItem);
-                        currentOption = "T";
                     }
+
                 }
                 else if (currentOption == "A")
                 {
@@ -97,7 +148,6 @@ namespace Eisenhower_Matrix
                     else
                     {
                         currentOption = "T";
-                        SelectedQuarter = "NN";
                     }
 
                 }
