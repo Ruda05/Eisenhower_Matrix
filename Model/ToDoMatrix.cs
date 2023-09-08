@@ -101,7 +101,7 @@ public class ToDoMatrix
         int columns = 13;
         object[,] matrixTables = new object[rows, columns];
 
-        string emptyString = new string(' ', 32);
+        string emptyString = new string(' ', 40);
 
         for (int i = 0; i < rows; i++)
         {
@@ -126,14 +126,14 @@ public class ToDoMatrix
                     line = $" {itemIndex + 1}. {item.ToString()}";
                     var lineLength = line.Length;
                     line = $"\u001b[31m{line}\u001b[0m"; // ANSI escape code for red text color
-                    var spacesNeeded = 32 - lineLength;
+                    var spacesNeeded = 40 - lineLength;
                     insertLine = line + new string(' ', spacesNeeded);
                 }
                 else
                 {
                     line = $" {itemIndex + 1}. {item.ToString()}";
                     var lineLength = line.Length;
-                    var spacesNeeded = 32 - lineLength;
+                    var spacesNeeded = 40 - lineLength;
                     insertLine = line + new string(' ', spacesNeeded);
                 }
                 matrixTables[quarterIndex, itemIndex] = insertLine;
@@ -144,8 +144,8 @@ public class ToDoMatrix
          
         // 28 spacji
 
-        tableBuilder.AppendLine("    |            URGENT              |           NOT URGENT           |");
-        tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+        tableBuilder.AppendLine("    |                URGENT                  |               NOT URGENT               |");
+        tableBuilder.AppendLine("  --|----------------------------------------|----------------------------------------|--");
         tableBuilder.AppendLine($"    |{matrixTables[0, 0]}|{matrixTables[1, 0]}|");
         tableBuilder.AppendLine($"    |{matrixTables[0, 1]}|{matrixTables[1, 1]}|");
         tableBuilder.AppendLine($"  I |{matrixTables[0, 2]}|{matrixTables[1, 2]}|");
@@ -159,7 +159,7 @@ public class ToDoMatrix
         tableBuilder.AppendLine($"  T |{matrixTables[0, 10]}|{matrixTables[1, 10]}|");
         tableBuilder.AppendLine($"    |{matrixTables[0, 11]}|{matrixTables[1, 11]}|");
         tableBuilder.AppendLine($"    |{matrixTables[0, 12]}|{matrixTables[1, 12]}|");
-        tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+        tableBuilder.AppendLine("  --|----------------------------------------|----------------------------------------|--");
         tableBuilder.AppendLine($"  N |{matrixTables[2, 0]}|{matrixTables[3, 0]}|");
         tableBuilder.AppendLine($"  O |{matrixTables[2, 1]}|{matrixTables[3, 1]}|");
         tableBuilder.AppendLine($"  T |{matrixTables[2, 2]}|{matrixTables[3, 2]}|");
@@ -173,7 +173,7 @@ public class ToDoMatrix
         tableBuilder.AppendLine($"  A |{matrixTables[2, 10]}|{matrixTables[3, 10]}|");
         tableBuilder.AppendLine($"  N |{matrixTables[2, 11]}|{matrixTables[3, 11]}|");
         tableBuilder.AppendLine($"  T |{matrixTables[2, 12]}|{matrixTables[3, 12]}|");
-        tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+        tableBuilder.AppendLine("  --|----------------------------------------|----------------------------------------|--");
 
         return tableBuilder.ToString();
 
