@@ -39,11 +39,11 @@ public class ToDoMatrix
         }
     }
 
-    public void AddItem(string title, DateTime deadline, bool isImportant)
+    public void AddItem(int id, string title, DateTime deadline, bool isImportant)
     {
         
         string quarterKey = EstimateUrgency(deadline, isImportant);
-        ToDoQuarters[quarterKey].AddItem(title, deadline);
+        ToDoQuarters[quarterKey].AddItem(id, title, deadline);
 
 
         // Adds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
@@ -123,7 +123,7 @@ public class ToDoMatrix
     
                 if (itemIndex == Program.SelectedTask && quarter.Key == Program.SelectedQuarter)
                 {
-                    line = $" {itemIndex + 1}. {item.ToString()} {item.Id}";
+                    line = $" {itemIndex + 1}. {item.ToString()}";
                     var lineLength = line.Length;
                     line = $"\u001b[31m{line}\u001b[0m"; // ANSI escape code for red text color
                     var spacesNeeded = 32 - lineLength;

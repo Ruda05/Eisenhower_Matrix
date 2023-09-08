@@ -124,7 +124,7 @@ public class ToDoItemDao : IToDoItemDao
 
                 if (!string.IsNullOrEmpty(title))
                 {
-                    ToDoItem Item = new(title, deadline);
+                    ToDoItem Item = new(id, title, deadline);
                     if (importance) Item.MakeImportant();
                     if (completed) Item.Mark();
                     Item.Id = id;

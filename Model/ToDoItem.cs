@@ -10,8 +10,9 @@ public class ToDoItem
     public char ItemMark { get; set; }
     
 
-    public ToDoItem(string title, DateTime deadline)
+    public ToDoItem(int id, string title, DateTime deadline)
     {
+        Id = id;
         Title = title;
         Deadline = deadline;
     }

@@ -14,9 +14,9 @@ namespace Eisenhower_Matrix
             ToDoItems = new List<ToDoItem>();
         }
 
-        public void AddItem(string title, DateTime deadline)
+        public void AddItem(int id, string title, DateTime deadline)
         {
-            ToDoItems.Add(new ToDoItem(title, deadline));
+            ToDoItems.Add(new ToDoItem(id, title, deadline));
         }
 
         public void RemoveItem(int index)
