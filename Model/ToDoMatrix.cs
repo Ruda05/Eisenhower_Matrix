@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection.Metadata;
+using System.Text;
 using Eisenhower_Matrix.Model;
 
 namespace Eisenhower_Matrix;
@@ -26,11 +27,16 @@ public class ToDoMatrix
         // Returns a private filed* todoQuarters*.
     }
 
-    public void GetQuarter(string status)
+    public ToDoQuarter GetQuarter(string status)
     {
-        // Returns a chosen* TodoQuarter*object from a map *todoQuarters *.
-        // Status should be one of the possible statuses('IU', 'IN', 'NU', 'NN').
-        // return ToDoQuarters[status];
+        if (ToDoQuarters.ContainsKey(status))
+        {
+            return ToDoQuarters[status];
+        }
+        else
+        {
+            throw new ArgumentException("Invalid status");
+        }
     }
 
     public void AddItem(string title, DateTime deadline, bool isImportant)
@@ -89,90 +95,82 @@ public class ToDoMatrix
         //return stringBuilder.ToString();
 
         StringBuilder tableBuilder = new StringBuilder();
-        string displayKey;
-        int groupIndex = 1;
+        int quarterIndex = 0;
+        
+        int rows = 4;
+        int columns = 13;
+        object[,] matrixTables = new object[rows, columns];
+
+        string emptyString = new string(' ', 32);
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                matrixTables[i, j] = emptyString;
+            }
+        }
 
         foreach (var quarter in ToDoQuarters)
         {
-            string key = quarter.Key;
-            switch (key)
-            {
-                case "IU":
-                    displayKey = "Important & Urgent";
-                    break;
-                case "IN":
-                    displayKey = "Important & Not Urgent";
-                    break;
-                case "NU":
-                    displayKey = "Not Important & Urgent";
-                    break;
-                case "NN":
-                    displayKey = "Not Important & Not Urgent";
-                    break;
-                default:
-                    displayKey = " ";
-                    break;
-            }
-
-
             ToDoQuarter toDoQuarter = quarter.Value;
-            tableBuilder.AppendLine($"{groupIndex}] {displayKey}\n");
-            groupIndex++;
-
-            int taskIndex = 1;
-            string tableLine = " ";
-
+            int itemIndex = 0;
+            var insertLine = " ";
+            
             foreach (ToDoItem item in toDoQuarter.GetItems())
             {
                 string line;
     
-                if (taskIndex == Program.SelectedTask && quarter.Key == Program.SelectedQuarter)
+                if (itemIndex == Program.SelectedTask && quarter.Key == Program.SelectedQuarter)
                 {
-                    line = $"\t{taskIndex}. {item.ToString()}";
+                    line = $"{itemIndex}. {item.ToString()}";
                     line = $"\u001b[31m{line}\u001b[0m"; // ANSI escape code for red text color
                 }
                 else
                 {
-                    line = $"\t{taskIndex}. {item.ToString()}";
+                    line = $" {itemIndex + 1}. {item.ToString()}";
                     var lineLength = line.Length;
                     var spacesNeeded = 32 - lineLength;
-                    var insertLine = line + new string(' ', spacesNeeded);
-                    tableLine = "|" + insertLine + "|";
+                    insertLine = line + new string(' ', spacesNeeded);
                 }
-                tableBuilder.AppendLine(tableLine);
-                taskIndex++;
+                matrixTables[quarterIndex, itemIndex] = insertLine;
+                itemIndex++;
             }
+            quarterIndex++;
         }
-        //tableBuilder.AppendLine("    |            URGENT              |           NOT URGENT           |");
-        //tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
-        //tableBuilder.AppendLine("    | 1. [ ] 9-6  go to the doctor   |                                |");
-        //tableBuilder.AppendLine("    | 2. [x] 11-6 submit assignment  |                                |");
-        //tableBuilder.AppendLine("  I |                                |                                |");
-        //tableBuilder.AppendLine("  M |                                |                                |");
-        //tableBuilder.AppendLine("  P |                                |                                |");
-        //tableBuilder.AppendLine("  O |                                |                                |");
-        //tableBuilder.AppendLine("  R |                                |                                |");
-        //tableBuilder.AppendLine("  T |                                |                                |");
-        //tableBuilder.AppendLine("  A |                                |                                |");
-        //tableBuilder.AppendLine("  N |                                |                                |");
-        //tableBuilder.AppendLine("  T |                                |                                |");
-        //tableBuilder.AppendLine("    |                                |                                |");
-        //tableBuilder.AppendLine("    |                                |                                |");
-        //tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
-        //tableBuilder.AppendLine("  N |                                |                                |");
-        //tableBuilder.AppendLine("  O |                                |                                |");
-        //tableBuilder.AppendLine("  T |                                |                                |");
-        //tableBuilder.AppendLine("    |                                |                                |");
-        //tableBuilder.AppendLine("  I |                                |                                |");
-        //tableBuilder.AppendLine("  M |                                |                                |");
-        //tableBuilder.AppendLine("  P |                                |                                |");
-        //tableBuilder.AppendLine("  O |                                |                                |");
-        //tableBuilder.AppendLine("  R |                                |                                |");
-        //tableBuilder.AppendLine("  T |                                |                                |");
-        //tableBuilder.AppendLine("  A |                                |                                |");
-        //tableBuilder.AppendLine("  N |                                |                                |");
-        //tableBuilder.AppendLine("  T |                                |                                |");
-        //tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+         
+        // 28 spacji
+
+        tableBuilder.AppendLine("    |            URGENT              |           NOT URGENT           |");
+        tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+        tableBuilder.AppendLine($"    |{matrixTables[0, 0]}|{matrixTables[1, 0]}|");
+        tableBuilder.AppendLine($"    |{matrixTables[0, 1]}|{matrixTables[1, 1]}|");
+        tableBuilder.AppendLine($"  I |{matrixTables[0, 2]}|{matrixTables[1, 2]}|");
+        tableBuilder.AppendLine($"  M |{matrixTables[0, 3]}|{matrixTables[1, 3]}|");
+        tableBuilder.AppendLine($"  P |{matrixTables[0, 4]}|{matrixTables[1, 4]}|");
+        tableBuilder.AppendLine($"  O |{matrixTables[0, 5]}|{matrixTables[1, 5]}|");
+        tableBuilder.AppendLine($"  R |{matrixTables[0, 6]}|{matrixTables[1, 6]}|");                                         
+        tableBuilder.AppendLine($"  T |{matrixTables[0, 7]}|{matrixTables[1, 7]}|");
+        tableBuilder.AppendLine($"  A |{matrixTables[0, 8]}|{matrixTables[1, 8]}|");
+        tableBuilder.AppendLine($"  N |{matrixTables[0, 9]}|{matrixTables[1, 9]}|");
+        tableBuilder.AppendLine($"  T |{matrixTables[0, 10]}|{matrixTables[1, 10]}|");
+        tableBuilder.AppendLine($"    |{matrixTables[0, 11]}|{matrixTables[1, 11]}|");
+        tableBuilder.AppendLine($"    |{matrixTables[0, 12]}|{matrixTables[1, 12]}|");
+        tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
+        tableBuilder.AppendLine($"  N |{matrixTables[2, 0]}|{matrixTables[3, 0]}|");
+        tableBuilder.AppendLine($"  O |{matrixTables[2, 1]}|{matrixTables[3, 1]}|");
+        tableBuilder.AppendLine($"  T |{matrixTables[2, 2]}|{matrixTables[3, 2]}|");
+        tableBuilder.AppendLine($"    |{matrixTables[2, 3]}|{matrixTables[3, 3]}|");
+        tableBuilder.AppendLine($"  I |{matrixTables[2, 4]}|{matrixTables[3, 4]}|");
+        tableBuilder.AppendLine($"  M |{matrixTables[2, 5]}|{matrixTables[3, 5]}|");
+        tableBuilder.AppendLine($"  P |{matrixTables[2, 6]}|{matrixTables[3, 6]}|");
+        tableBuilder.AppendLine($"  O |{matrixTables[2, 7]}|{matrixTables[3, 7]}|");
+        tableBuilder.AppendLine($"  R |{matrixTables[2, 8]}|{matrixTables[3, 8]}|");
+        tableBuilder.AppendLine($"  T |{matrixTables[2, 9]}|{matrixTables[3, 9]}|");
+        tableBuilder.AppendLine($"  A |{matrixTables[2, 10]}|{matrixTables[3, 10]}|");
+        tableBuilder.AppendLine($"  N |{matrixTables[2, 11]}|{matrixTables[3, 11]}|");
+        tableBuilder.AppendLine($"  T |{matrixTables[2, 12]}|{matrixTables[3, 12]}|");
+        tableBuilder.AppendLine("  --|--------------------------------|--------------------------------|--");
 
         return tableBuilder.ToString();
 

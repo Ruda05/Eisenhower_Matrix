@@ -3,7 +3,7 @@ using Eisenhower_Matrix.Model;
 
 namespace Eisenhower_Matrix
 {
-    internal class ToDoQuarter
+    public class ToDoQuarter
     {
 
         // creates empty list named ToDoItems with strings containing description of ToDoItems objects
