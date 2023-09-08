@@ -127,6 +127,7 @@ public class ToDoItemDao : IToDoItemDao
                     ToDoItem Item = new(title, deadline);
                     if (importance) Item.MakeImportant();
                     if (completed) Item.Mark();
+                    Item.Id = id;
                     allItems.Add(Item);
                 }
                 else

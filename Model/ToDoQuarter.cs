@@ -7,7 +7,7 @@ namespace Eisenhower_Matrix
     {
 
         // creates empty list named ToDoItems with strings containing description of ToDoItems objects
-        private List<ToDoItem> ToDoItems;
+        public List<ToDoItem> ToDoItems;
 
         public ToDoQuarter()
         {

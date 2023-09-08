@@ -11,6 +11,8 @@ namespace Eisenhower_Matrix
         public static int SelectedTask { get; private set; } = 0;
         public static void Main(string[] args)
         {
+           
+
             var manager = new MatrixDbManager();
 
             Console.WriteLine(manager.TestConnection());
@@ -46,9 +48,15 @@ namespace Eisenhower_Matrix
                     toDoMatrix.AddItem(item.Title, item.Deadline, item.IsImportant);
                 }
 
+                var itemList = toDoMatrix.GetQuarter(SelectedQuarter);
+                var selectedItem = itemList.ToDoItems[0];
+
                 if (currentOption == "T")
                 {
                     Console.Clear();
+                    Console.WriteLine(selectedItem.Id);
+                    Console.WriteLine(selectedItem.IsImportant);
+                    Console.WriteLine(selectedItem);
                     Console.WriteLine(toDoMatrix.ToString());
                     display.DisplayQuestion("Select an option:\n[A]dd\n[D]elete\n[Q]uit\nYour choice: ");
                     currentOption = Console.ReadLine().ToUpper();
