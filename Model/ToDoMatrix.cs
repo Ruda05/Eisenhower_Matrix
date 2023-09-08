@@ -116,15 +116,18 @@ public class ToDoMatrix
             ToDoQuarter toDoQuarter = quarter.Value;
             int itemIndex = 0;
             var insertLine = " ";
-            
+            Console.WriteLine(quarter.Key);
             foreach (ToDoItem item in toDoQuarter.GetItems())
             {
                 string line;
     
                 if (itemIndex == Program.SelectedTask && quarter.Key == Program.SelectedQuarter)
                 {
-                    line = $"{itemIndex}. {item.ToString()}";
+                    line = $" {itemIndex + 1}. {item.ToString()}";
+                    var lineLength = line.Length;
                     line = $"\u001b[31m{line}\u001b[0m"; // ANSI escape code for red text color
+                    var spacesNeeded = 32 - lineLength;
+                    insertLine = line + new string(' ', spacesNeeded);
                 }
                 else
                 {

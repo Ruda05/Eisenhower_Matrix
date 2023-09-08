@@ -8,7 +8,7 @@ namespace Eisenhower_Matrix
     internal class Program
     {
         public static string SelectedQuarter { get; private set; } = "IU";
-        public static int SelectedTask { get; private set; } = 4;
+        public static int SelectedTask { get; private set; } = 0;
         public static void Main(string[] args)
         {
             var manager = new MatrixDbManager();
