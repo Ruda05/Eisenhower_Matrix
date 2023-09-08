@@ -61,10 +61,8 @@ namespace Eisenhower_Matrix
                     {
                         isActive = false;
                     }
-                    
-                    
-                }
 
+                }
                 else if (currentOption == "S")
                 {
                     Console.Clear();
@@ -153,30 +151,9 @@ namespace Eisenhower_Matrix
                 }
                 else if (currentOption == "D")
                 {
-                    display.DisplayQuestion("Which task to delete?\nSelect group [1-4]:");
-                    string groupToDelete = Console.ReadLine();
-                    string groupMark;
-                    switch (groupToDelete)
-                    {
-                        case "1":
-                            groupMark = "IU";
-                            break;
-                        case "2":
-                            groupMark = "IN";
-                            break;
-                        case "3":
-                            groupMark = "NU";
-                            break;
-                        case "4":
-                            groupMark = "NN";
-                            break;
-                        default:
-                            groupMark = " ";
-                            break;
-                    }
-                    display.DisplayQuestion("Select task number:");
-                    string taskToDelete = Console.ReadLine();
-
+                    var itemList = toDoMatrix.GetQuarter(SelectedQuarter);
+                    var selectedItem = itemList.ToDoItems[SelectedTask];
+                    manager.DeleteItem(selectedItem);
                     currentOption = "T";
                 }
             }

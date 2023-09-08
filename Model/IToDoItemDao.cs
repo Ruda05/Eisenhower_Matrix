@@ -19,7 +19,7 @@ public interface IToDoItemDao
     /// </summary>
     /// <param name="id">ID of the object to delete</param>
     /// <returns>True if object was found and deleted and false if not found</returns>
-    public bool Delete(int id);
+    public void Delete(ToDoItem toDoItem);
 
     /// <summary>
     /// Get all objects.

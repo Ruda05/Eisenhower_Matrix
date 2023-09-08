@@ -70,15 +70,15 @@ public class ToDoItemDao : IToDoItemDao
             throw;
         }
     }
-    public bool Delete(int id)
+    public void Delete(ToDoItem toDoItem)
     {
-        const string deleteItemCommand = @"DELETE FROM todoitem WHERE id = @itemId";
+        const string deleteItemCommand = @"DELETE FROM todoitems WHERE id = @itemId";
         try
         {
             using var connection = new SqlConnection(connectionString);
             var cmd = new SqlCommand(deleteItemCommand, connection);
 
-            cmd.Parameters.AddWithValue("@itemId", id);
+            cmd.Parameters.AddWithValue("@itemId", toDoItem.Id);
 
             if (connection.State == System.Data.ConnectionState.Closed)
             {
@@ -86,11 +86,11 @@ public class ToDoItemDao : IToDoItemDao
             }
 
             cmd.ExecuteScalar();
-            return true;
+            
         }
         catch (SqlException)
         {
-            return false;
+            
             throw;
         }
         

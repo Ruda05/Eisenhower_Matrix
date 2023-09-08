@@ -25,6 +25,11 @@ public class MatrixDbManager
         toDoItemDao.Add(toDoItem);
     }
 
+    public void DeleteItem(ToDoItem toDoItem)
+    {
+        toDoItemDao.Delete(toDoItem);
+    }
+
     public void UpdateItem(ToDoItem toDoItem) => toDoItemDao.Update(toDoItem);
 
     public List<ToDoItem> GetAllItems() => toDoItemDao.GetAll();
