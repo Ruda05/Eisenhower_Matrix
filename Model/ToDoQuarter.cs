@@ -6,7 +6,6 @@ namespace Eisenhower_Matrix
     public class ToDoQuarter
     {
 
-        // creates empty list named ToDoItems with strings containing description of ToDoItems objects
         public List<ToDoItem> ToDoItems;
 
         public ToDoQuarter()
@@ -22,7 +21,6 @@ namespace Eisenhower_Matrix
         public void RemoveItem(int index)
         {
             ToDoItems.Remove(ToDoItems[index]);
-            // Removes *TodoItem* object using *index* of list *todoItems*
         }
         public void ArchiveItems()
         {

@@ -18,24 +18,7 @@ namespace Eisenhower_Matrix
             Console.WriteLine(manager.TestConnection());
             var input = new Input();
             var display = new Display();
-
             string currentOption = "T";
-
-            /*
-            var testItem = new ToDoItem("greg", DateTime.Now.AddDays(5));
-            Console.WriteLine(testItem.IsDone);
-            testItem.Mark();
-            Console.WriteLine(testItem.IsDone);
-            Console.WriteLine(testItem.Deadline);
-            Console.WriteLine(testItem.Title);
-            testItem.MakeImportant();
-            Console.WriteLine(testItem.IsImportant);
-            Console.WriteLine(testItem.Id);
-            testItem.Id = 1;
-            manager.UpdateItem(testItem);
-            Add item - adding item to the database - Test
-            manager.AddItem(testItem);
-            */
 
             bool isActive = true;
             while (isActive)
@@ -47,8 +30,6 @@ namespace Eisenhower_Matrix
                 {
                     toDoMatrix.AddItem(item.Id, item.Title, item.Deadline, item.IsImportant, item.IsDone);
                 }
-
-                
 
                 if (currentOption == "T")
                 {
@@ -83,23 +64,20 @@ namespace Eisenhower_Matrix
                     }
                     if (keyInfo.Key == ConsoleKey.Tab)
                     {
+                        SelectedTask = 0;
                         switch (SelectedQuarter)
                         {
                             case "IU":
                                 SelectedQuarter = "IN";
-                                SelectedTask = 0;
                                 break;
                             case "IN":
                                 SelectedQuarter = "NU";
-                                SelectedTask = 0;
                                 break;
                             case "NU":
                                 SelectedQuarter = "NN";
-                                SelectedTask = 0;
                                 break;
                             case "NN":
                                 SelectedQuarter = "IU";
-                                SelectedTask = 0;
                                 break;
                         }
                     }
@@ -158,7 +136,7 @@ namespace Eisenhower_Matrix
                 }
             }
             Console.Clear();
-            display.DisplayQuestion("Thank you for using our Application.\nSee you soon!\n\nCreated (2023) by:\nRadosław Rocławski\nGrzegorz Łabojko\n\n\n\n");
+            display.DisplayQuestion("Thank you for using our Application.\nSee you soon!\n\nCreated (2023) by:\nRadosław Rocławski\nGrzegorz Łabojko\nDaniel Czyż\n\n\n\n");
         }
     }
 }
