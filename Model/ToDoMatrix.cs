@@ -22,11 +22,6 @@ public class ToDoMatrix
 
     }
 
-    public static void GetQuarters()
-    {
-        // Returns a private filed* todoQuarters*.
-    }
-
     public ToDoQuarter GetQuarter(string status)
     {
         if (ToDoQuarters.ContainsKey(status))
@@ -38,17 +33,11 @@ public class ToDoMatrix
             throw new ArgumentException("Invalid status");
         }
     }
-
+    
     public void AddItem(int id, string title, DateTime deadline, bool isImportant, bool isDone)
-    {
-        
+    {    
         string quarterKey = EstimateUrgency(deadline, isImportant);
         ToDoQuarters[quarterKey].AddItem(id, title, deadline, isDone);
-
-
-        // Adds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
-        // This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
-        //ToDoQuarters[importance].AddItem
     }
 
     public string EstimateUrgency(DateTime deadline, bool isImportant)
@@ -81,19 +70,6 @@ public class ToDoMatrix
 
     public override string ToString()
     {
-        //  Returns a todoQuarters list (an Eisenhower todoMatrix) formatted to string.
-        // return $"[{IsDone}] {Deadline} {Title}";
-
-        //StringBuilder stringBuilder = new StringBuilder();
-
-        //stringBuilder.AppendLine("TodoMatrix Keys:");
-        //foreach (string quarterKey in ToDoQuarters.Keys)
-        //{
-        //    stringBuilder.AppendLine(quarterKey);
-        //}
-
-        //return stringBuilder.ToString();
-
         StringBuilder tableBuilder = new StringBuilder();
         int quarterIndex = 0;
         
@@ -141,8 +117,6 @@ public class ToDoMatrix
             }
             quarterIndex++;
         }
-         
-        // 28 spacji
 
         tableBuilder.AppendLine("    |                URGENT                  |               NOT URGENT               |");
         tableBuilder.AppendLine("  --|----------------------------------------|----------------------------------------|--");
@@ -177,10 +151,5 @@ public class ToDoMatrix
 
         return tableBuilder.ToString();
 
-    }
-
-    internal string? EstimateUrgency(string userInputDeadline1, string userInputDeadline2, Func<string, bool> isImportant)
-    {
-        throw new NotImplementedException();
     }
 }
