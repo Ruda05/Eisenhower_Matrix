@@ -97,7 +97,7 @@ public class ToDoItemDao : IToDoItemDao
     }
     public List<ToDoItem> GetAll()
     {
-        const string getAllCommand = @"SELECT id, title, deadline, important, completed FROM todoitems";
+        const string getAllCommand = @"SELECT id, title, deadline, important, completed FROM todoitems ORDER by deadline";
 
         try
         {
