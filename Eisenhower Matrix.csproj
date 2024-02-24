@@ -13,4 +13,8 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Eisenhower Martrix.Test\Eisenhower Martrix.Test.csproj" />
+  </ItemGroup>
+
 </Project>

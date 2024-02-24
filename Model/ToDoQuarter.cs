@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Eisenhower_Matrix.Model;
+using Eisenhower_Matrix.Test;
 
 namespace Eisenhower_Matrix
 {
@@ -15,21 +16,41 @@ namespace Eisenhower_Matrix
 
         public void AddItem(int id, string title, DateTime deadline, bool isDone)
         {
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                throw new ArgumentException("Title cannot be empty or whitespace.");
+            }
+
+            if (deadline < DateTime.Today)
+            {
+                throw new ArgumentException("Deadline cannot be in the past.");
+            }
+
             ToDoItems.Add(new ToDoItem(id, title, deadline, isDone));
         }
 
         public void RemoveItem(int index)
         {
-            ToDoItems.Remove(ToDoItems[index]);
+            if (index < 0 || index >= ToDoItems.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+            }
+
+            ToDoItems.RemoveAt(index);
         }
         public void ArchiveItems()
         {
-            // Removes all *TodoItem* objects with a parameter* isDone* set to *true* from list *todoItems*.
+            ToDoItems.RemoveAll(item => item.IsDone);
         }
 
-        public void GetItem(int index)
+        public ToDoItem GetItem(int index)
         {
-            // Returns* TodoItem* object from *index* of list* todoItems*.
+            if (index < 0 || index >= ToDoItems.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+            }
+
+            return ToDoItems[index];
         }
 
         public List<ToDoItem> GetItems()

@@ -1,4 +1,5 @@
-﻿namespace Eisenhower_Matrix.Model;
+﻿
+namespace Eisenhower_Matrix.Model;
 
 public class ToDoItem
 {
@@ -14,8 +15,17 @@ public class ToDoItem
     {
         Id = id;
         Title = title;
-        Deadline = deadline;
+        Deadline = deadline.Date;
         IsDone = isDone;
+        CheckForPastDeadline();
+    }
+
+    private void CheckForPastDeadline()
+    {
+        if (Deadline < DateTime.Today)
+        {
+            IsDone = true;
+        }
     }
 
     public string CreateToDoItem(string title, DateTime deadline)
